@@ -1,3 +1,41 @@
+/*
+ felicalib - FeliCa access wrapper library
+
+ Copyright (c) 2007, Takuya Murakami, All rights reserved.
+
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are
+ met:
+
+ 1. Redistributions of source code must retain the above copyright notice,
+    this list of conditions and the following disclaimer. 
+
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution. 
+
+ 3. Neither the name of the project nor the names of its contributors
+    may be used to endorse or promote products derived from this software
+    without specific prior written permission. 
+
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+/**
+  @file felicalib.h
+
+  ÉÅÉCÉìÉwÉbÉ_
+*/
+
 #include <windows.h>
 
 typedef unsigned char uint8;
@@ -10,19 +48,19 @@ typedef struct strpasori pasori;
 #define MAX_SERVICE_CODE	256
 
 /**
-   @brief FeliCa •œ•Û•…•Î
+   @brief FeliCa ÉnÉìÉhÉã
 
-   FeliCa §Œæ Û§Ú≥ «º§π§ÎπΩ¬§¬Œ
+   FeliCa ÇÃèÓïÒÇäiî[Ç∑ÇÈç\ë¢ëÃ
 */
 typedef struct strfelica {
-    pasori *p;		/**< PaSoRi •œ•Û•…•Î */
-    uint16 systemcode;	/**< •∑•π•∆•‡•≥°º•… */
+    pasori *p;		/**< PaSoRi ÉnÉìÉhÉã */
+    uint16 systemcode;	/**< ÉVÉXÉeÉÄÉRÅ[Éh */
     uint8 IDm[8];	/**< IDm */
     uint8 PMm[8];	/**< PMm */
 
     /* systemcode */
-    uint8 num_system_code;			/**< ŒÛµÛ•∑•π•∆•‡•≥°º•…øÙ */
-    uint16 system_code[MAX_SYSTEM_CODE];	/**< ŒÛµÛ•∑•π•∆•‡•≥°º•… */
+    uint8 num_system_code;			/**< óÒãìÉVÉXÉeÉÄÉRÅ[Éhêî */
+    uint16 system_code[MAX_SYSTEM_CODE];	/**< óÒãìÉVÉXÉeÉÄÉRÅ[Éh */
 
     /* service codes */
     uint8 num_area_code;
