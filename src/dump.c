@@ -55,7 +55,7 @@ int main()
     }
     pasori_init(p);
     
-    f = felica_polling(p, 0xffff, 0, 0);
+    f = felica_polling(p, POLLING_ANY, 0, 0);
     if (!f) {
 	exit(1);
     }
@@ -67,14 +67,14 @@ int main()
     printf("\n");
     free(f);
 
-    f = enum_systemcode(p);
+    f = felica_enum_systemcode(p);
     if (!f) {
 	exit(1);
     }
 
     for (i = 0; i < f->num_system_code; i++) {
 	printf("# System code: %04X\n", N2HS(f->system_code[i]));
-	f2 = enum_service(p, N2HS(f->system_code[i]));
+	f2 = felica_enum_service(p, N2HS(f->system_code[i]));
 	if (!f2) {
 	    exit(1);
 	}

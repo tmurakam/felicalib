@@ -36,6 +36,9 @@
   メインヘッダ
 */
 
+#ifndef _FELICALIB_H
+#define	_FELICALIB_H
+
 #include <windows.h>
 
 typedef unsigned char uint8;
@@ -62,12 +65,13 @@ typedef struct strfelica {
     uint8 num_system_code;			/**< 列挙システムコード数 */
     uint16 system_code[MAX_SYSTEM_CODE];	/**< 列挙システムコード */
 
-    /* service codes */
-    uint8 num_area_code;
-    uint16 area_code[MAX_AREA_CODE];
-    uint16 end_service_code[MAX_AREA_CODE];
-    uint8 num_service_code;
-    uint16 service_code[MAX_SERVICE_CODE];
+    /* area/service codes */
+    uint8 num_area_code;			/**< エリアコード数 */
+    uint16 area_code[MAX_AREA_CODE];		/**< エリアコード */
+    uint16 end_service_code[MAX_AREA_CODE];	/**< エンドサービスコード */
+
+    uint8 num_service_code;			/**< サービスコード数 */
+    uint16 service_code[MAX_SERVICE_CODE];	/**< サービスコード */
 } felica;
 
 /* constants */
@@ -88,6 +92,8 @@ int pasori_init(pasori *);
 felica* felica_polling(pasori *, uint16, uint8, uint8);
 int felica_read_without_encryption02(felica *f, int servicecode, int mode, uint8 addr, uint8 *b);
 
-felica * enum_systemcode(pasori *p);
-felica * enum_service(pasori *p, uint16 systemcode);
+felica * felica_enum_systemcode(pasori *p);
+felica * felica_enum_service(pasori *p, uint16 systemcode);
+
+#endif /* _FELICALIB_H */
 

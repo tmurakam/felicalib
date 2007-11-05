@@ -196,7 +196,7 @@ int felica_read_without_encryption02(felica *f, int servicecode, int mode, uint8
    結果は、felica構造体の num_system_code/system_code に格納される。
    なお、システムコードのエンディアンは逆に格納されているので注意すること。
 */
-felica * enum_systemcode(pasori *p)
+felica * felica_enum_systemcode(pasori *p)
 {
     felica *f;
     POLLING polling;
@@ -204,7 +204,7 @@ felica * enum_systemcode(pasori *p)
     INSTR_REQ_SYSTEM_CODE irs;
     OUTSTR_REQ_SYSTEM_CODE ors;
 
-    f = alloc_felica(p, 0xffff);
+    f = alloc_felica(p, POLLING_ANY);
 
     polling.system_code = (uint8 *)&f->systemcode;
     polling.time_slot = 0;
@@ -234,7 +234,7 @@ felica * enum_systemcode(pasori *p)
    結果は、felica構造体の num_area_code/area_code/end_service_code および
    num_service_code/service_code に格納される。
 */
-felica * enum_service(pasori *p, uint16 systemcode)
+felica * felica_enum_service(pasori *p, uint16 systemcode)
 {
     felica *f;
 
