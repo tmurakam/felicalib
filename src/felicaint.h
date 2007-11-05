@@ -33,20 +33,20 @@
 /**
   @file felicalib.h
 
-  “à•”ƒwƒbƒ_
+  å†…éƒ¨ãƒ˜ãƒƒãƒ€
 */
 
 #ifndef	_FELICAINT_H
 #define	_FELICAINT_H
 
 typedef struct {
-    uint8* system_code; // ƒVƒXƒeƒ€ƒR[ƒh (2byte)
-    uint8 time_slot; // ƒ^ƒCƒ€ƒXƒƒbƒg (0x00, 0x01, 0x03, 0x07, 0x0f ‚Ì‚¢‚Ã‚ê‚©)
+    uint8* system_code; // ã‚·ã‚¹ãƒ†ãƒ ã‚³ãƒ¼ãƒ‰ (2byte)
+    uint8 time_slot; // ã‚¿ã‚¤ãƒ ã‚¹ãƒ­ãƒƒãƒˆ (0x00, 0x01, 0x03, 0x07, 0x0f ã®ã„ã¥ã‚Œã‹)
 } POLLING;
 
 typedef struct {
-    uint8* card_idm; // ƒJ[ƒh‚Ì IDm (8byte)
-    uint8* card_pmm; // ƒJ[ƒh‚Ì PMm (8byte)
+    uint8* card_idm; // ã‚«ãƒ¼ãƒ‰ã® IDm (8byte)
+    uint8* card_pmm; // ã‚«ãƒ¼ãƒ‰ã® PMm (8byte)
 } CARD_INFO;
 
 typedef struct {
@@ -101,10 +101,10 @@ typedef BOOL (*read_block_without_encryption_t)(INSTR_READ_BLOCK *, OUTSTR_READ_
 
 /* structures */
 /**
-   @brief PaSoRi ƒnƒ“ƒhƒ‹
+   @brief PaSoRi ãƒãƒ³ãƒ‰ãƒ«
 */
 struct strpasori {
-    /** DLL ƒnƒ“ƒhƒ‹ */
+    /** DLL ãƒãƒ³ãƒ‰ãƒ« */
     HINSTANCE hInstDLL;
 
 #define declare_entry(f)	f ## _t f

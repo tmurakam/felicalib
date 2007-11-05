@@ -31,9 +31,9 @@
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 /**
-  @file felicalib.h
+  @file dump.c
 
-  FeliCa ƒ_ƒ“ƒv
+  FeliCa ãƒ€ãƒ³ãƒ—
 */
 
 #include <stdio.h>
@@ -51,12 +51,14 @@ int main()
 
     p = pasori_open(NULL);
     if (!p) {
+	fprintf(stderr, "PaSoRi open failed.\n");
 	exit(1);
     }
     pasori_init(p);
     
     f = felica_polling(p, POLLING_ANY, 0, 0);
     if (!f) {
+	fprintf(stderr, "Polling card failed.\n");
 	exit(1);
     }
     printf("# IDm: ");
@@ -64,7 +66,7 @@ int main()
     printf("\n");
     printf("# PMm: ");
     hexdump(f->PMm, 8);
-    printf("\n");
+    printf("\n\n");
     free(f);
 
     f = felica_enum_systemcode(p);
@@ -76,6 +78,7 @@ int main()
 	printf("# System code: %04X\n", N2HS(f->system_code[i]));
 	f2 = felica_enum_service(p, N2HS(f->system_code[i]));
 	if (!f2) {
+	    fprintf(stderr, "Enum service failed.\n");
 	    exit(1);
 	}
 	
