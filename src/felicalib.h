@@ -75,10 +75,10 @@ typedef struct strfelica {
 } felica;
 
 /* constants */
-/* system codes (Network Byte Order!) */
+/* システムコード (ネットワークバイトオーダ/ビックエンディアンで表記) */
 #define	POLLING_ANY	0xffff
-#define	POLLING_SUICA	0x0003
-#define	POLLING_EDY	0xfe00
+#define	POLLING_EDY	0xfe00		/**< 共通領域 (Edy などが使用) */
+#define	POLLING_SUICA	0x0003		/**< サイバネ領域 */
 
 /* endian */
 #define	N2HS(x)		(((x) >> 8) & 0xff | ((x) << 8) & 0xff00)
