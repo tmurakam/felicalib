@@ -3,7 +3,7 @@
 <!-- DW6 -->
 <head>
 <!-- Copyright 2005 Macromedia, Inc. All rights reserved. -->
-<title>レストラン - テキストページ</title>
+<title>FeliCa Library</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -56,6 +56,9 @@ google_color_url = "008000";
 <p>また、全ブロックをダンプするプログラム(libpasori の lpdump 相当) もあります。</p>
 <h2>ダウンロード</h2>
 <p><a href="http://sourceforge.jp/projects/felicalib/">プロジェクトページ</a>からダウンロードしてください。</p>
+<h2>使い方</h2>
+<p>サンプルとして FelicaDump.exe を付けてあります (lpdumpと同じようなもの)。コマンドラインで実行すると、FeliCa の非セキュリティエリアをすべて読み出します。</p>
+<p>本ライブラリをあなたのプログラムから使用する場合は、felicalib.h を #include し、felicalib.c を一緒にコンパイル/リンクしてください。</p>
 <h2>libpasori との互換性</h2>
 <p>以下の API は互換性があります。</p>
 <ul>
@@ -79,8 +82,9 @@ google_color_url = "008000";
 <p>本ライブラリは以下の情報を参考に作成しました。</p>
 <ul><li><a href="http://wiki.osdev.info/?FeliCa/SDK for FeliCa">FeliCa/SDK for FeliCa</a> (osdev info)</li>
   <li><a href="http://www5d.biglobe.ne.jp/~tallboy/springfield/technopark/felica/felica_program01.html">FeliCa Library を使ったプログラムの制作と実行</a></li>
+  <li><a href="http://www.jisc.go.jp/app/pager?id=31259&amp;%23jps.JPSH0090D:JPSO0023:/JPS/JPSO0090.jsp=&amp;AKKNB_vJISJISNO=X6319-4">JIS X 6319-4</a></li>
 </ul>
-<p>なお、作者は SDK for FeliCa は所持しておりませんし、ドキュメントも見たことはありません。本ライブラリは上記の情報のみ(+多少の想像力+多少の実験)を使用して作成しました。もちろん、felica.dll のリバースエンジニアリングも行っておりません。</p>
+<p>なお、作者は SDK for FeliCa は所持しておりませんし、ドキュメントも見たことはありません。本ライブラリは上記の情報のみ( + 多少の想像力 + 多少の実験)を使用して作成しました。もちろん、felica.dll のリバースエンジニアリングは行っておりません。</p>
 <h2>ライセンスなど</h2>
 <p>本ライブラリは BSD Licence の元で自由に利用可能です。</p>
 <p>なお、本ライブラリの正確性、動作に関しては一切無保証です。</p>
