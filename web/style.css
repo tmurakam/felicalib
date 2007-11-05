@@ -1,0 +1,82 @@
+a
+{
+	text-decoration:none;
+}
+a:link
+{
+	/*color: rgb(51,153,255);*/
+	text-decoration:none;
+}
+a:hover
+{
+	color:red;
+	text-decoration:underline;
+}
+a:visited
+{
+	color: rgb(51,102,204); 
+}
+
+a:active 
+{
+	color: rgb(255,153,0);
+}
+
+table
+{
+	table-border-color-light: rgb(255,204,102);
+	table-border-color-dark: rgb(204,153,102); 
+}
+
+body, th, td {
+	font-size: 11pt;
+}
+
+body
+{
+	/*font-family: Verdana, Arial, Helvetica;*/
+	/*background-color: rgb(255,255,204);*/
+	/*background-color: rgb(255,255,210);*/
+	/*color: rgb(102,102,51);*/
+	color: black;
+}
+
+h1
+{
+	font-size: 230%;
+	color: #A000A0;
+	background-color: #ececec;
+	border-left: 10px solid #000080;
+	border-top: 2px solid #000080;
+	padding-left: 10; padding-top: 3; padding-bottom: 3;
+}
+h2
+{
+	font-size: 160%;
+	color: #408080;
+	background-color: #ececec;
+	border-left: 6px solid #000080;
+	border-top: 2px solid #000080;
+	padding-left: 10; padding-top: 3; padding-bottom: 3;
+}
+h3
+{
+	font-size: 110%;
+	color: #008000;
+	background-color: #ececec;
+	border-left: 5px solid #006000;
+	/*border-top: 1px solid #006000;*/
+	padding-left: 10; padding-top: 2; padding-bottom: 2;
+}
+h4
+{
+	color: rgb(153,153,0);
+}
+h5
+{
+	color: rgb(255,153,0);
+}
+h6
+{
+	color: rgb(51,102,204);
+}

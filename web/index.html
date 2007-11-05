@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- DW6 -->
+<head>
+<!-- Copyright 2005 Macromedia, Inc. All rights reserved. -->
+<title>レストラン - テキストページ</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<body>
+<h1>FeliCa Library</h1>
+
+<h2>FeliCa Libraryとは？</h2>
+<p>FeliCa Library は、USB接続の FeliCa リーダ PaSoRi を使って、FeliCa にアクセスするためのライブラリです。</p>
+<p>通常、PaSoRi を制御するためには <a href="http://www.sony.co.jp/Products/felica/pdt/sdk.html">SDK for FeliCa</a> を使う必要がありますが、この SDK は10万円以上しますし、法人しか購入できないため、個人では手が出せません。</p>
+<p>また、<a href="http://libpasori.sourceforge.jp/">libpasori</a> というフリーのライブラリもありますが、Windows では libusb-win32 をインストールする必要があります。開発者はともかく、一般ユーザに libusb-win32 をインストールさせなければならないので、PaSoRi を使ったアプリの配布はちょっと気が引けます。</p>
+<p>FeliCa Library は個人開発者が簡単に PaSoRi を使ったアプリケーションを開発するためのライブラリで、libusb-win32 なしで PaSoRi を制御できるフリーのライブラリです。</p>
+<h2>特徴</h2>
+<ul>
+  <li>フリーソフト (BSD ライセンス)</li>
+  <li>felica.dll をダイレクトに叩くので、<a href="http://www.sony.co.jp/Products/felica/pcrw/">FeliCaポートソフトウェア</a>さえインストールされていればよい (libusb-win32不要)</li>
+  <li>libpasori API の下位互換</li>
+</ul>
+<p>IDm/PMm の読み取りや、暗号化されていないブロックの読み出し、システムコード・サービスコードの列挙などが可能です。一般的なアプリケーションであれば十分開発可能だと思います。</p>
+<p>また、全ブロックをダンプするプログラム(libpasori の lpdump 相当) もあります。</p>
+<h2>ダウンロード</h2>
+<p>準備中</p>
+<h2>libpasori との互換性</h2>
+<p>以下の API は互換性があります。</p>
+<ul>
+  <li>pasori_open</li>
+  <li>pasori_close</li>
+  <li>pasori_init</li>
+  <li>felica_polling</li>
+  <li>felica_read_without_encryption02</li>
+</ul>
+<p>以下の API は実装されていません。</p>
+<ul><li>pasori_write</li>
+  <li>pasori_read</li>
+</ul>
+<p>以下の API が追加されています。</p>
+<ul>
+  <li>felica_enum_systemcode</li>
+  <li>felica_enum_service</li>
+</ul>
+<p>詳細はソースを見てください。</p>
+<h2>参考文献</h2>
+<p>本ライブラリは以下の情報を参考に作成しました。</p>
+<ul><li><a href="http://wiki.osdev.info/?FeliCa/SDK for FeliCa">FeliCa/SDK for FeliCa</a> (osdev info)</li>
+  <li><a href="http://www5d.biglobe.ne.jp/~tallboy/springfield/technopark/felica/felica_program01.html">FeliCa Library を使ったプログラムの制作と実行</a></li>
+</ul>
+<p>なお、作者は SDK for FeliCa は所持しておりませんし、ドキュメントも見たことはありません。本ライブラリは上記の情報のみ(+多少の想像力+多少の実験)を使用して作成しました。もちろん、felica.dll のリバースエンジニアリングも行っておりません。</p>
+<h2>ライセンスなど</h2>
+<p>本ライブラリは BSD Licence の元で自由に利用可能です。</p>
+<p>なお、本ライブラリの正確性、動作に関しては一切無保証です。</p>
+<p>PaSoRi(パソリ)、FeliCaは株式会社ソニーの登録商標です。本プロジェクトは  SONYまたはFeliCa技術を用いるその他企業ともいかなる関係もありません。</p>
+<p>&nbsp;</p>
+</body>
+</html>
