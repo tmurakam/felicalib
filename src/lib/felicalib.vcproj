@@ -2,7 +2,7 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="8.00"
-	Name="lib"
+	Name="felicalib"
 	ProjectGUID="{6C207D2C-38B7-4C66-B1C6-7A74F59F2583}"
 	RootNamespace="lib"
 	Keyword="Win32Proj"

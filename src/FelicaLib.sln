@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lib", "lib\lib.vcproj", "{6C207D2C-38B7-4C66-B1C6-7A74F59F2583}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FelicaDump", "dump\FelicaDump.vcproj", "{4FBA68A2-C69E-4B45-86D0-C4409C2D0516}"
 	ProjectSection(ProjectDependencies) = postProject
 		{6C207D2C-38B7-4C66-B1C6-7A74F59F2583} = {6C207D2C-38B7-4C66-B1C6-7A74F59F2583}
@@ -13,16 +11,14 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nanaco", "nanaco\nanaco.vcp
 		{6C207D2C-38B7-4C66-B1C6-7A74F59F2583} = {6C207D2C-38B7-4C66-B1C6-7A74F59F2583}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "felicalib", "lib\felicalib.vcproj", "{6C207D2C-38B7-4C66-B1C6-7A74F59F2583}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6C207D2C-38B7-4C66-B1C6-7A74F59F2583}.Debug|Win32.ActiveCfg = Debug|Win32
-		{6C207D2C-38B7-4C66-B1C6-7A74F59F2583}.Debug|Win32.Build.0 = Debug|Win32
-		{6C207D2C-38B7-4C66-B1C6-7A74F59F2583}.Release|Win32.ActiveCfg = Release|Win32
-		{6C207D2C-38B7-4C66-B1C6-7A74F59F2583}.Release|Win32.Build.0 = Release|Win32
 		{4FBA68A2-C69E-4B45-86D0-C4409C2D0516}.Debug|Win32.ActiveCfg = Debug|Win32
 		{4FBA68A2-C69E-4B45-86D0-C4409C2D0516}.Debug|Win32.Build.0 = Debug|Win32
 		{4FBA68A2-C69E-4B45-86D0-C4409C2D0516}.Release|Win32.ActiveCfg = Release|Win32
@@ -31,6 +27,10 @@ Global
 		{AD192DAF-D89C-41D8-950C-1B6DBC4D4EFF}.Debug|Win32.Build.0 = Debug|Win32
 		{AD192DAF-D89C-41D8-950C-1B6DBC4D4EFF}.Release|Win32.ActiveCfg = Release|Win32
 		{AD192DAF-D89C-41D8-950C-1B6DBC4D4EFF}.Release|Win32.Build.0 = Release|Win32
+		{6C207D2C-38B7-4C66-B1C6-7A74F59F2583}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6C207D2C-38B7-4C66-B1C6-7A74F59F2583}.Debug|Win32.Build.0 = Debug|Win32
+		{6C207D2C-38B7-4C66-B1C6-7A74F59F2583}.Release|Win32.ActiveCfg = Release|Win32
+		{6C207D2C-38B7-4C66-B1C6-7A74F59F2583}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
