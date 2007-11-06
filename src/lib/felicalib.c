@@ -162,10 +162,15 @@ int felica_read_without_encryption02(felica *f, int servicecode, int mode, uint8
     INSTR_READ_BLOCK irb;
     OUTSTR_READ_BLOCK orb;
 
-    uint8 service_code_list[2] = { servicecode & 0xff, servicecode >> 8 };
-    uint8 block_list[2] = { 0x80, addr };
+    uint8 service_code_list[2];
+    uint8 block_list[2];
     uint8 status_flag1, status_flag2;
     uint8 result_number_of_blocks = 0;
+
+    service_code_list[0] = servicecode & 0xff;
+    service_code_list[1] = servicecode >> 8;
+    block_list[0] = 0x80;
+    block_list[1] = addr;
 
     irb.card_idm = f->IDm;
     irb.number_of_services = 1;
@@ -188,6 +193,11 @@ int felica_read_without_encryption02(felica *f, int servicecode, int mode, uint8
 }
 
 /*------------- ここからは libpasori 互換でない (独自) ------------*/
+
+void felica_free(felica *f)
+{
+    free(f);
+}
 
 /**
    @brief システムコードの列挙

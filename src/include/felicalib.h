@@ -92,6 +92,10 @@ typedef struct strfelica {
 #define	H2NS(x)		N2HS(x)
 
 /* APIs */
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 pasori *pasori_open(char *);
 void pasori_close(pasori *);
 
@@ -99,8 +103,13 @@ int pasori_init(pasori *);
 felica* felica_polling(pasori *, uint16, uint8, uint8);
 int felica_read_without_encryption02(felica *f, int servicecode, int mode, uint8 addr, uint8 *b);
 
+void felica_free(felica *f);
 felica * felica_enum_systemcode(pasori *p);
 felica * felica_enum_service(pasori *p, uint16 systemcode);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* _FELICALIB_H */
 
