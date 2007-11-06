@@ -31,7 +31,7 @@
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 /**
-  @file felicalib.h
+  @file felicaint.h
 
   内部ヘッダ
 */
@@ -39,52 +39,60 @@
 #ifndef	_FELICAINT_H
 #define	_FELICAINT_H
 
+/** @brief Polling 構造体 */
 typedef struct {
-    uint8* system_code; // システムコード (2byte)
-    uint8 time_slot; // タイムスロット (0x00, 0x01, 0x03, 0x07, 0x0f のいづれか)
+    uint8* system_code;	///< システムコード (2byte, ネットワークバイトオーダ)
+    uint8 time_slot;	///< タイムスロット (0x00, 0x01, 0x03, 0x07, 0x0f のいずれか)
 } POLLING;
 
+/** @brief カード情報構造体 */
 typedef struct {
-    uint8* card_idm; // カードの IDm (8byte)
-    uint8* card_pmm; // カードの PMm (8byte)
+    uint8* card_idm; 			///< カードの IDm (8byte)
+    uint8* card_pmm; 			///< カードの PMm (8byte)
 } CARD_INFO;
 
+/** @brief read_block_without_encryption 入力構造体 */
 typedef struct {
-    uint8 *card_idm;
-    uint8 number_of_services;
-    uint8 *service_code_list;
-    uint8 number_of_blocks;
-    uint8 *block_list;
+    uint8 *card_idm;			///< IDm
+    uint8 number_of_services;		///< サービスコード数
+    uint8 *service_code_list;		///< サービスコードリスト
+    uint8 number_of_blocks;		///< ブロック数
+    uint8 *block_list;			///< ブロックリスト
 } INSTR_READ_BLOCK;
 
+/** @brief read_block_without_encryption 出力構造体 */
 typedef struct {
-    uint8 *status_flag_1;
-    uint8 *status_flag_2;
-    uint8 *result_number_of_blocks;
-    uint8 *block_data;
+    uint8 *status_flag_1;		///< ステータスフラグ1
+    uint8 *status_flag_2;		///< ステータスフラグ2
+    uint8 *result_number_of_blocks;	///< データブロック数
+    uint8 *block_data;			///< データブロック
 } OUTSTR_READ_BLOCK;
 
+/** @brief polling_and_request_system_code 入力構造体 */
 typedef struct {
-    uint8 *card_idm;
+    uint8 *card_idm;			///< IDm
 } INSTR_REQ_SYSTEM_CODE;
 
+/** @brief polling_and_request_system_code 出力構造体 */
 typedef struct {
-    uint8 number_of_system_codes;
-    uint8 *system_code_list;
+    uint8 number_of_system_codes;	///< システムコード数
+    uint8 *system_code_list;		///< システムコード配列
 } OUTSTR_REQ_SYSTEM_CODE;
 
+/** @brief polling_and_search_service_code 入力構造体 */
 typedef struct {
-    int buffer_size_of_area_codes;
-    int buffer_size_of_service_codes;
-    int offset_of_area_service_index;
+    int buffer_size_of_area_codes;	///< エリアコードバッファサイズ
+    int buffer_size_of_service_codes;	///< サービスコードバッファサイズ
+    int offset_of_area_service_index;	///< エリアサービスオフセット(?)
 } INSTR_SEARCH_SERVICE;
 
+/** @brief polling_and_search_service_code 出力構造体 */
 typedef struct {
-    int num_service_codes;
-    uint8 *service_code_list;
-    int num_area_codes;
-    uint8 *area_code_list;
-    uint8 *end_service_code_list;
+    int num_service_codes;		///< サービスコード数
+    uint8 *service_code_list;		///< サービスコード配列
+    int num_area_codes;			///< エリアコード数
+    uint8 *area_code_list;		///< エリアコード配列
+    uint8 *end_service_code_list;	///< エンドサービスコード配列
 } OUTSTR_SEARCH_SERVICE;
 
 /* DLL entries */
@@ -102,10 +110,11 @@ typedef BOOL (*read_block_without_encryption_t)(INSTR_READ_BLOCK *, OUTSTR_READ_
 /* structures */
 /**
    @brief PaSoRi ハンドル
+
+   felica.dll の DLL ハンドル、および DLL のエントリポイントを保持する。
 */
 struct strpasori {
-    /** DLL ハンドル */
-    HINSTANCE hInstDLL;
+    HINSTANCE hInstDLL;	///< DLL ハンドル
 
 #define declare_entry(f)	f ## _t f
     declare_entry(initialize_library);

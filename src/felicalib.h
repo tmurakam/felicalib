@@ -35,7 +35,11 @@
 
   メインヘッダ
 */
+/**
+   @mainpage
 
+   API 仕様については、 felicalib.h を参照のこと。
+*/
 #ifndef _FELICALIB_H
 #define	_FELICALIB_H
 
@@ -77,11 +81,13 @@ typedef struct strfelica {
 /* constants */
 /* システムコード (ネットワークバイトオーダ/ビックエンディアンで表記) */
 #define	POLLING_ANY	0xffff
-#define	POLLING_EDY	0xfe00		/**< 共通領域 (Edy などが使用) */
-#define	POLLING_SUICA	0x0003		/**< サイバネ領域 */
+#define	POLLING_EDY	0xfe00		/**< システムコード: 共通領域 (Edy などが使用) */
+#define	POLLING_SUICA	0x0003		/**< システムコード: サイバネ領域 */
 
 /* endian */
+/** ネットワークバイトオーダからホストバイトオーダへの変換(16bit) */
 #define	N2HS(x)		(((x) >> 8) & 0xff | ((x) << 8) & 0xff00)
+/** ホストバイトオーダからネットワークバイトオーダへの変換(16bit) */
 #define	H2NS(x)		N2HS(x)
 
 /* APIs */
