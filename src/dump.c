@@ -33,7 +33,7 @@
 /**
   @file dump.c
 
-  FeliCa ãƒ€ãƒ³ãƒ—
+  FeliCa ƒ_ƒ“ƒv
 */
 
 #include <stdio.h>

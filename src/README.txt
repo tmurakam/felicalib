@@ -1,11 +1,11 @@
 * FeliCa Library
 
-PaSoRi を使って FeliCa にアクセスするためのライブラリです。
+PaSoRi ���g���� FeliCa �ɃA�N�Z�X���邽�߂̃��C�u�����ł��B
 
-詳細は http://felicalib.sourceforge.jp を参照してください。
+�ڍׂ� http://felicalib.sourceforge.jp ���Q�Ƃ��Ă��������B
 
 
-** ビルド手順
+** �r���h�菇
 
-Visual Studio 2005 用のプロジェクトファイルを添付してあります。
-FelicaLib.vcproj を開いてビルドしてください。
+Visual Studio 2005 �p�̃v���W�F�N�g�t�@�C����Y�t���Ă���܂��B
+FelicaLib.vcproj ���J���ăr���h���Ă��������B

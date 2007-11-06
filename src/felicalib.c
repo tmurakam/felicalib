@@ -33,18 +33,18 @@
 /**
   @file felicalib.h
 
-  felicalib æœ¬ä½“
+  felicalib –{‘Ì
 */
 
 #include "felicalib.h"
 #include "felicaint.h"
 
 /**
-   @brief PaSoRi ã‚’ã‚ªãƒ¼ãƒ—ãƒ³ã™ã‚‹
-   @param[in] dummy ãƒ€ãƒŸãƒ¼ (libpasori ã¨ã®äº’æ›æ€§ã®ãŸã‚)
-   @retval pasori ãƒãƒ³ãƒ‰ãƒ«
+   @brief PaSoRi ‚ğƒI[ƒvƒ“‚·‚é
+   @param[in] dummy ƒ_ƒ~[ (libpasori ‚Æ‚ÌŒİŠ·«‚Ì‚½‚ß)
+   @retval pasori ƒnƒ“ƒhƒ‹
 
-   felica.dll ã‚’ãƒ­ãƒ¼ãƒ‰ã€åˆæœŸåŒ–ã™ã‚‹
+   felica.dll ‚ğƒ[ƒhA‰Šú‰»‚·‚é
  */
 pasori *pasori_open(char *dummy)
 {
@@ -78,10 +78,10 @@ pasori *pasori_open(char *dummy)
 }
 
 /**
-   @brief PaSoRi ãƒãƒ³ãƒ‰ãƒ«ã‚’ã‚¯ãƒ­ãƒ¼ã‚ºã™ã‚‹
-   @param[in] p pasoriãƒãƒ³ãƒ‰ãƒ«
+   @brief PaSoRi ƒnƒ“ƒhƒ‹‚ğƒNƒ[ƒY‚·‚é
+   @param[in] p pasoriƒnƒ“ƒhƒ‹
 
-   felica.dll ã‚’è§£æ”¾ã™ã‚‹
+   felica.dll ‚ğ‰ğ•ú‚·‚é
 */
 void pasori_close(pasori *p)
 {
@@ -90,9 +90,9 @@ void pasori_close(pasori *p)
 }
 
 /**
-   @brief PaSoRi ã‚’åˆæœŸåŒ–ã™ã‚‹
-   @param[in] p pasoriãƒãƒ³ãƒ‰ãƒ«
-   @return ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰
+   @brief PaSoRi ‚ğ‰Šú‰»‚·‚é
+   @param[in] p pasoriƒnƒ“ƒhƒ‹
+   @return ƒGƒ‰[ƒR[ƒh
 */
 int pasori_init(pasori *p)
 {
@@ -112,12 +112,12 @@ static felica *alloc_felica(pasori *p, uint16 systemcode)
 }
 
 /**
-   @brief FeliCa ã‚’ãƒãƒ¼ãƒªãƒ³ã‚°ã™ã‚‹
-   @param[in] p pasoriãƒãƒ³ãƒ‰ãƒ«
-   @param[in] systemcode ã‚·ã‚¹ãƒ†ãƒ ã‚³ãƒ¼ãƒ‰
-   @param[in] RFU RFU (ä½¿ç”¨ã—ãªã„)
-   @param[in] timeslot ã‚¿ã‚¤ãƒ ã‚¹ãƒ­ãƒƒãƒˆ
-   @return felicaãƒãƒ³ãƒ‰ãƒ«
+   @brief FeliCa ‚ğƒ|[ƒŠƒ“ƒO‚·‚é
+   @param[in] p pasoriƒnƒ“ƒhƒ‹
+   @param[in] systemcode ƒVƒXƒeƒ€ƒR[ƒh
+   @param[in] RFU RFU (g—p‚µ‚È‚¢)
+   @param[in] timeslot ƒ^ƒCƒ€ƒXƒƒbƒg
+   @return felicaƒnƒ“ƒhƒ‹
 */
 felica *felica_polling(pasori *p, uint16 systemcode, uint8 RFU, uint8 timeslot)
 {
@@ -146,16 +146,16 @@ felica *felica_polling(pasori *p, uint16 systemcode, uint8 RFU, uint8 timeslot)
 }
 
 /**
-   @brief æš—å·åŒ–ã•ã‚Œã¦ã„ãªã„ãƒ–ãƒ­ãƒƒã‚¯ã‚’èª­ã¿è¾¼ã‚€
-   @param[in] f felicaãƒãƒ³ãƒ‰ãƒ«
-   @param[in] servicecode ã‚µãƒ¼ãƒ“ã‚¹ã‚³ãƒ¼ãƒ‰
-   @param[in] mode ãƒ¢ãƒ¼ãƒ‰(ä½¿ç”¨ã—ãªã„)
-   @param[in] addr ãƒ–ãƒ­ãƒƒã‚¯ç•ªå·
-   @param[out] data ãƒ‡ãƒ¼ã‚¿(16ãƒã‚¤ãƒˆ)
-   @return ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰
+   @brief ˆÃ†‰»‚³‚ê‚Ä‚¢‚È‚¢ƒuƒƒbƒN‚ğ“Ç‚İ‚Ş
+   @param[in] f felicaƒnƒ“ƒhƒ‹
+   @param[in] servicecode ƒT[ƒrƒXƒR[ƒh
+   @param[in] mode ƒ‚[ƒh(g—p‚µ‚È‚¢)
+   @param[in] addr ƒuƒƒbƒN”Ô†
+   @param[out] data ƒf[ƒ^(16ƒoƒCƒg)
+   @return ƒGƒ‰[ƒR[ƒh
 
-   ã‚µãƒ¼ãƒ“ã‚¹ã‚³ãƒ¼ãƒ‰ã€ãƒ–ãƒ­ãƒƒã‚¯ç•ªå·ã‚’æŒ‡å®šã—ã¦ãƒ–ãƒ­ãƒƒã‚¯ã‚’èª­ã¿è¾¼ã‚€ã€‚
-   ã‚·ã‚¹ãƒ†ãƒ ã‚³ãƒ¼ãƒ‰ã¯ felica_polling ã§æŒ‡å®šã—ãŸã‚‚ã®ãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚
+   ƒT[ƒrƒXƒR[ƒhAƒuƒƒbƒN”Ô†‚ğw’è‚µ‚ÄƒuƒƒbƒN‚ğ“Ç‚İ‚ŞB
+   ƒVƒXƒeƒ€ƒR[ƒh‚Í felica_polling ‚Åw’è‚µ‚½‚à‚Ì‚ªg—p‚³‚ê‚éB
 */
 int felica_read_without_encryption02(felica *f, int servicecode, int mode, uint8 addr, uint8 *data)
 {
@@ -187,15 +187,15 @@ int felica_read_without_encryption02(felica *f, int servicecode, int mode, uint8
     return 0;
 }
 
-/*------------- ã“ã“ã‹ã‚‰ã¯ libpasori äº’æ›ã§ãªã„ (ç‹¬è‡ª) ------------*/
+/*------------- ‚±‚±‚©‚ç‚Í libpasori ŒİŠ·‚Å‚È‚¢ (“Æ©) ------------*/
 
 /**
-   @brief ã‚·ã‚¹ãƒ†ãƒ ã‚³ãƒ¼ãƒ‰ã®åˆ—æŒ™
-   @param[in] p pasoriãƒãƒ³ãƒ‰ãƒ«
-   @return felicaãƒãƒ³ãƒ‰ãƒ«
+   @brief ƒVƒXƒeƒ€ƒR[ƒh‚Ì—ñ‹“
+   @param[in] p pasoriƒnƒ“ƒhƒ‹
+   @return felicaƒnƒ“ƒhƒ‹
 
-   çµæœã¯ã€felicaæ§‹é€ ä½“ã® num_system_code/system_code ã«æ ¼ç´ã•ã‚Œã‚‹ã€‚
-   ãªãŠã€ã‚·ã‚¹ãƒ†ãƒ ã‚³ãƒ¼ãƒ‰ã®ã‚¨ãƒ³ãƒ‡ã‚£ã‚¢ãƒ³ã¯é€†ã«æ ¼ç´ã•ã‚Œã¦ã„ã‚‹ã®ã§æ³¨æ„ã™ã‚‹ã“ã¨ã€‚
+   Œ‹‰Ê‚ÍAfelica\‘¢‘Ì‚Ì num_system_code/system_code ‚ÉŠi”[‚³‚ê‚éB
+   ‚È‚¨AƒVƒXƒeƒ€ƒR[ƒh‚ÌƒGƒ“ƒfƒBƒAƒ“‚Í‹t‚ÉŠi”[‚³‚ê‚Ä‚¢‚é‚Ì‚Å’ˆÓ‚·‚é‚±‚ÆB
 */
 felica * felica_enum_systemcode(pasori *p)
 {
@@ -227,13 +227,13 @@ felica * felica_enum_systemcode(pasori *p)
 }
 
 /**
-   @brief ã‚µãƒ¼ãƒ“ã‚¹/ã‚¨ãƒªã‚¢ã‚³ãƒ¼ãƒ‰ã®åˆ—æŒ™
-   @param[in] p pasoriãƒãƒ³ãƒ‰ãƒ«
-   @param[in] systemcode ã‚·ã‚¹ãƒ†ãƒ ã‚³ãƒ¼ãƒ‰
-   @return felicaãƒãƒ³ãƒ‰ãƒ«
+   @brief ƒT[ƒrƒX/ƒGƒŠƒAƒR[ƒh‚Ì—ñ‹“
+   @param[in] p pasoriƒnƒ“ƒhƒ‹
+   @param[in] systemcode ƒVƒXƒeƒ€ƒR[ƒh
+   @return felicaƒnƒ“ƒhƒ‹
 
-   çµæœã¯ã€felicaæ§‹é€ ä½“ã® num_area_code/area_code/end_service_code ãŠã‚ˆã³
-   num_service_code/service_code ã«æ ¼ç´ã•ã‚Œã‚‹ã€‚
+   Œ‹‰Ê‚ÍAfelica\‘¢‘Ì‚Ì num_area_code/area_code/end_service_code ‚¨‚æ‚Ñ
+   num_service_code/service_code ‚ÉŠi”[‚³‚ê‚éB
 */
 felica * felica_enum_service(pasori *p, uint16 systemcode)
 {
