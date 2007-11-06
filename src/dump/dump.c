@@ -43,7 +43,7 @@
 static void printserviceinfo(uint16 s);
 static void hexdump(uint8 *addr, int n);
 
-int main()
+int _tmain(int argc, _TCHAR *argv[])
 {
     pasori *p;
     felica *f, *f2;

@@ -1,0 +1,10 @@
+LIBRARY	"felicalib"
+
+EXPORTS
+    pasori_open
+    pasori_close
+    pasori_init
+    felica_polling
+    felica_read_without_encryption02
+    felica_enum_service
+    felica_enum_systemcode

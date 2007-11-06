@@ -44,7 +44,7 @@ static void nanaco_dump(uint8 *data);
 static int read4b(uint8 *p);
 static int read2b(uint8 *p);
 
-int main()
+int _tmain(int argc, _TCHAR *argv[])
 {
     pasori *p;
     felica *f;

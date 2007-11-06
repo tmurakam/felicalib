@@ -44,6 +44,7 @@
 #define	_FELICALIB_H
 
 #include <windows.h>
+#include <tchar.h>
 
 typedef unsigned char uint8;
 typedef unsigned short int uint16;

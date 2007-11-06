@@ -53,7 +53,7 @@ pasori *pasori_open(char *dummy)
     p = (pasori *)malloc(sizeof(pasori));
     
     /* open felica.dll */
-    p->hInstDLL = LoadLibrary("C:\\Program Files\\Common Files\\Sony Shared\\FeliCaLibrary\\felica.dll");
+    p->hInstDLL = LoadLibrary(_T("C:\\Program Files\\Common Files\\Sony Shared\\FeliCaLibrary\\felica.dll"));
     if (p->hInstDLL == NULL) {
 	free(p);
 	return NULL;
