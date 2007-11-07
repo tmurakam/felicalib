@@ -16,9 +16,13 @@ namespace FelicaLib
 	[DllImport("felicalib.dll")]
 	private extern static IntPtr felica_polling(IntPtr p, ushort systemcode, byte rfu, byte time_slot);
 	[DllImport("felicalib.dll")]
-	private extern static int felica_read_without_encryption02(IntPtr f, int systemcode, int mode, byte addr, byte[] data);
-	[DllImport("felicalib.dll")]
 	private extern static void felica_free(IntPtr f);
+	[DllImport("felicalib.dll")]
+	private extern static void felica_getidm(IntPtr f, byte[] data);
+	[DllImport("felicalib.dll")]
+	private extern static void felica_getpmm(IntPtr f, byte[] data);
+	[DllImport("felicalib.dll")]
+	private extern static int felica_read_without_encryption02(IntPtr f, int systemcode, int mode, byte addr, byte[] data);
 
 	private IntPtr pasorip = IntPtr.Zero;
 	private IntPtr felicap = IntPtr.Zero;
@@ -51,6 +55,30 @@ namespace FelicaLib
 		throw new Exception("polling card failed");
 	    }
 	}
+
+	byte[] IDm()
+	{
+	    if (felicap == IntPtr.Zero)
+	    {
+		throw new Exception("no polling executed.");
+	    }
+
+	    byte[] buf = new byte[8];
+	    felica_getidm(felicap, buf);
+	    return buf;
+	}    
+
+	byte[] PMm()
+	{
+	    if (felicap == IntPtr.Zero)
+	    {
+		throw new Exception("no polling executed.");
+	    }
+
+	    byte[] buf = new byte[8];
+	    felica_getpmm(felicap, buf);
+	    return buf;
+	}    
 
 	byte[] ReadWithoutEncryption(int systemcode, int addr)
 	{
