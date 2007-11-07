@@ -35,16 +35,16 @@ namespace FelicaLib
                 int hour = (value >> 6) & 0x3f;
                 int min = value & 0x3f;
 
-                Console.Write("“ú•t {0}/{1:2}/{2:2} {3:2}:{4:2} ", year, month, date, hour, min);
+                Console.Write("{0}/{1:D2}/{2:D2} {3:D2}:{4:D2}", year, month, date, hour, min);
 
                 value = (data[1] << 24) + (data[2] << 16) + (data[3] << 8) + data[4];
-                Console.Write("‹àŠz " + value.ToString() + "‰~ ");
+                Console.Write("  ‹àŠz {0,6}‰~", value);
 
                 value = (data[5] << 24) + (data[6] << 16) + (data[7] << 8) + data[8];
-                Console.Write("Žc‚ " + value.ToString() + "‰~ ");
+                Console.Write("  Žc‚ {0,6}‰~", value);
 
                 value = (data[13] << 8) + data[14];
-                Console.WriteLine("˜A”Ô " + value);
+                Console.WriteLine("  ˜A”Ô {0}", value);
             }
         }
     }
