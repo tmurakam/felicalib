@@ -101,9 +101,12 @@ void pasori_close(pasori *);
 
 int pasori_init(pasori *);
 felica* felica_polling(pasori *, uint16, uint8, uint8);
+void felica_free(felica *f);
+void felica_getidm(felica *f, uint8 *buf);
+void felica_getpmm(felica *f, uint8 *buf);
+
 int felica_read_without_encryption02(felica *f, int servicecode, int mode, uint8 addr, uint8 *b);
 
-void felica_free(felica *f);
 felica * felica_enum_systemcode(pasori *p);
 felica * felica_enum_service(pasori *p, uint16 systemcode);
 

@@ -194,9 +194,33 @@ int felica_read_without_encryption02(felica *f, int servicecode, int mode, uint8
 
 /*------------- ここからは libpasori 互換でない (独自) ------------*/
 
+/**
+   @brief felica ハンドル解放
+   @param[in] f felica ハンドル
+*/
 void felica_free(felica *f)
 {
     free(f);
+}
+
+/**
+   @brief IDm 取得
+   @param[in] f felica ハンドル
+   @param[out] buf IDm を格納するバッファ(8バイト)
+*/
+void felica_getidm(felica *f, uint8 *buf)
+{
+    memcpy(buf, f->IDm, 8);
+}
+
+/**
+   @brief PMm 取得
+   @param[in] f felica ハンドル
+   @param[out] buf PMm を格納するバッファ(8バイト)
+*/
+void felica_getpmm(felica *f, uint8 *buf)
+{
+    memcpy(buf, f->PMm, 8);
 }
 
 /**
