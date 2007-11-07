@@ -22,12 +22,12 @@ namespace FelicaLib
 	[DllImport("felicalib.dll")]
 	private extern static void felica_getpmm(IntPtr f, byte[] data);
 	[DllImport("felicalib.dll")]
-	private extern static int felica_read_without_encryption02(IntPtr f, int systemcode, int mode, byte addr, byte[] data);
+	private extern static int felica_read_without_encryption02(IntPtr f, int servicecode, int mode, byte addr, byte[] data);
 
 	private IntPtr pasorip = IntPtr.Zero;
 	private IntPtr felicap = IntPtr.Zero;
 
-	FelicaLib()
+	public FelicaLib()
 	{
 	    pasorip = pasori_open(null);
 	    if (pasorip == IntPtr.Zero)
@@ -45,7 +45,7 @@ namespace FelicaLib
 	    pasori_close(pasorip);
 	}
 
-	void Polling(int systemcode)
+	public void Polling(int systemcode)
 	{
 	    felica_free(felicap);
 
@@ -56,7 +56,7 @@ namespace FelicaLib
 	    }
 	}
 
-	byte[] IDm()
+	public byte[] IDm()
 	{
 	    if (felicap == IntPtr.Zero)
 	    {
@@ -68,7 +68,7 @@ namespace FelicaLib
 	    return buf;
 	}    
 
-	byte[] PMm()
+	public byte[] PMm()
 	{
 	    if (felicap == IntPtr.Zero)
 	    {
@@ -80,7 +80,7 @@ namespace FelicaLib
 	    return buf;
 	}    
 
-	byte[] ReadWithoutEncryption(int systemcode, int addr)
+	public byte[] ReadWithoutEncryption(int servicecode, int addr)
 	{
 	    if (felicap == IntPtr.Zero)
 	    {
@@ -88,7 +88,7 @@ namespace FelicaLib
 	    }
 
 	    byte[] data = new byte[16];
-	    int ret = felica_read_without_encryption02(felicap, systemcode, 0, (byte)addr, data);
+	    int ret = felica_read_without_encryption02(felicap, servicecode, 0, (byte)addr, data);
 	    if (ret != 0)
 	    {
 		return null;
