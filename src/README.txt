@@ -8,4 +8,4 @@ PaSoRi を使って FeliCa にアクセスするためのライブラリです。
 ** ビルド手順
 
 Visual Studio 2005 用のプロジェクトファイルを添付してあります。
-FelicaLib.sln を開いてビルドしてください。
+src\FelicaLib.sln を開いてビルドしてください。
