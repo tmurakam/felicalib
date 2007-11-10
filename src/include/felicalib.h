@@ -107,6 +107,8 @@ void felica_getpmm(felica *f, uint8 *buf);
 
 int felica_read_without_encryption02(felica *f, int servicecode, int mode, uint8 addr, uint8 *b);
 
+int felica_write_without_encryption(felica *f, int servicecode, uint8 addr, uint8 *b); // WARNING! NOT TESTED!!
+
 felica * felica_enum_systemcode(pasori *p);
 felica * felica_enum_service(pasori *p, uint16 systemcode);
 

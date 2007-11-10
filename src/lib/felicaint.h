@@ -68,6 +68,22 @@ typedef struct {
     uint8 *block_data;			///< データブロック
 } OUTSTR_READ_BLOCK;
 
+/** @brief write_block_without_encryption 入力構造体 */
+typedef struct {
+    uint8 *card_idm;			///< IDm
+    uint8 number_of_services;		///< サービスコード数
+    uint8 *service_code_list;		///< サービスコードリスト
+    uint8 number_of_blocks;		///< ブロック数
+    uint8 *block_list;			///< ブロックリスト
+    uint8 *block_data;			///< 書き込みデータ(16byte)
+} INSTR_WRITE_BLOCK;			
+
+/** @brief read_block_without_encryption 出力構造体 */
+typedef struct {
+    uint8 *status_flag_1;
+    uint8 *status_flag_2;
+} OUTSTR_WRITE_BLOCK;
+
 /** @brief polling_and_request_system_code 入力構造体 */
 typedef struct {
     uint8 *card_idm;			///< IDm
@@ -106,6 +122,7 @@ typedef BOOL (*polling_and_request_system_code_t)(POLLING *, INSTR_REQ_SYSTEM_CO
 typedef BOOL (*polling_and_search_service_code_t)(POLLING *, INSTR_SEARCH_SERVICE *,
 						  CARD_INFO *, OUTSTR_SEARCH_SERVICE *);
 typedef BOOL (*read_block_without_encryption_t)(INSTR_READ_BLOCK *, OUTSTR_READ_BLOCK *);
+typedef BOOL (*write_block_without_encryption_t)(INSTR_WRITE_BLOCK *, OUTSTR_WRITE_BLOCK *);
 
 /* structures */
 /**
@@ -125,6 +142,7 @@ struct strpasori {
     declare_entry(polling_and_request_system_code);
     declare_entry(polling_and_search_service_code);
     declare_entry(read_block_without_encryption);
+    declare_entry(write_block_without_encryption);
 #undef declare_entry
 };
 

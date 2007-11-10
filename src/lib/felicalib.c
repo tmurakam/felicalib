@@ -69,6 +69,7 @@ pasori *pasori_open(char *dummy)
     resolve_entry(polling_and_request_system_code);
     resolve_entry(polling_and_search_service_code);
     resolve_entry(read_block_without_encryption);
+    resolve_entry(write_block_without_encryption);
 
     if (!p->initialize_library()) {
 	free(p);
@@ -193,6 +194,53 @@ int felica_read_without_encryption02(felica *f, int servicecode, int mode, uint8
 }
 
 /*------------- ここからは libpasori 互換でない (独自) ------------*/
+
+/**
+   @brief 暗号化されていないブロックを書き込む
+   @param[in] f felicaハンドル
+   @param[in] servicecode サービスコード
+   @param[in] mode モード(使用しない)
+   @param[in] addr ブロック番号
+   @param[out] data データ(16バイト)
+   @return エラーコード
+
+   サービスコード、ブロック番号を指定してブロックを読み込む。
+   システムコードは felica_polling で指定したものが使用される。
+
+   注意!!! 本関数は未テスト!!!!!
+*/
+int felica_write_without_encryption(felica *f, int servicecode, uint8 addr, uint8 *data)
+{
+    INSTR_WRITE_BLOCK irb;
+    OUTSTR_WRITE_BLOCK orb;
+
+    uint8 service_code_list[2];
+    uint8 block_list[2];
+    uint8 status_flag1, status_flag2;
+
+    service_code_list[0] = servicecode & 0xff;
+    service_code_list[1] = servicecode >> 8;
+    block_list[0] = 0x80;
+    block_list[1] = addr;
+
+    irb.card_idm = f->IDm;
+    irb.number_of_services = 1;
+    irb.service_code_list = service_code_list;
+    irb.number_of_blocks = 1;
+    irb.block_list = block_list;
+    irb.block_data = data;
+
+    orb.status_flag_1 = &status_flag1;
+    orb.status_flag_2 = &status_flag2;
+
+    if (!f->p->write_block_without_encryption(&irb, &orb)) {
+	return -1;
+    }
+    if (status_flag1 != 0) {
+	return -1;
+    }
+    return 0;
+}
 
 /**
    @brief felica ハンドル解放
