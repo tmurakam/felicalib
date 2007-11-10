@@ -49,6 +49,7 @@ int _tmain(int argc, _TCHAR *argv[])
     pasori *p;
     felica *f;
     int i;
+    uint8 data[16];
 
     p = pasori_open(NULL);
     if (!p) {
@@ -62,17 +63,19 @@ int _tmain(int argc, _TCHAR *argv[])
 	fprintf(stderr, "Polling card failed.\n");
 	exit(1);
     }
-#if 0
-    printf("# IDm: ");
-    hexdump(f->IDm, 8);
+
+    if (felica_read_without_encryption02(f, 0x558b, 0, 0, data)) {
+	fprintf(stderr, "Can't read nanaco ID.\n");
+	exit(1);
+    }
+
+    printf("nanaco id: ");
+    for (i = 0; i < 8; i++) {
+	printf("%02x", data[i]);
+    }
     printf("\n");
-    printf("# PMm: ");
-    hexdump(f->PMm, 8);
-    printf("\n\n");
-#endif
 
     for (i = 0; ; i++) {
-	uint8 data[16];
 	if (felica_read_without_encryption02(f, 0x564f, 0, (uint8)i, data)) {
 	    break;
 	}
