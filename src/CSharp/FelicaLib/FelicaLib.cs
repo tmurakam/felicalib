@@ -5,7 +5,18 @@ using System.Runtime.InteropServices;
 
 namespace FelicaLib
 {
-    public class FelicaLib
+    // システムコード
+    enum SystemCode : int
+    {
+	Any = 0xffff,	    // ANY
+	Common = 0xfe00,    // 共通領域
+	Cyberne = 0x0003,   // サイバネ領域
+
+	Edy = 0xfe00,	    // Edy (=共通領域)
+	Suica = 0x0003,	    // Suica (=サイバネ領域)
+    }
+
+    public class Felica : IDisposable
     {
 	[DllImport("felicalib.dll")]
 	private extern static IntPtr pasori_open(String dummy);
@@ -27,22 +38,31 @@ namespace FelicaLib
 	private IntPtr pasorip = IntPtr.Zero;
 	private IntPtr felicap = IntPtr.Zero;
 
-	public FelicaLib()
+	public Felica()
 	{
 	    pasorip = pasori_open(null);
 	    if (pasorip == IntPtr.Zero)
 	    {
-		throw new Exception("can't load felicalib library");
+		throw new Exception("felicalib.dll を開けません");
 	    }
 	    if (pasori_init(pasorip) != 0)
 	    {
-		throw new Exception("can't connect PaSoRi");
+		throw new Exception("PaSoRi に接続できません");
 	    }
 	}
 
-	~FelicaLib()
+	public void Dispose()
 	{
-	    pasori_close(pasorip);
+	    if (pasorip != IntPtr.Zero)
+	    {
+		pasori_close(pasorip);
+		pasorip = IntPtr.Zero;
+	    }
+	}
+
+	~Felica()
+	{
+	    Dispose();
 	}
 
 	public void Polling(int systemcode)
@@ -52,7 +72,7 @@ namespace FelicaLib
 	    felicap = felica_polling(pasorip, (ushort)systemcode, 0, 0);
 	    if (felicap == IntPtr.Zero)
 	    {
-		throw new Exception("polling card failed");
+		throw new Exception("カード読み取り失敗");
 	    }
 	}
 

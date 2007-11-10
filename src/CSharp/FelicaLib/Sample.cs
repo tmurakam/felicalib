@@ -1,20 +1,44 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using FelicaLib;
 
 namespace FelicaLib
 {
-    public class Sample
+    public class Nanaco
     {
         public static void Main()
         {
-            FelicaLib f = new FelicaLib();
+	    try
+	    {
+		using (Felica f = new Felica())
+		{
+		    readNanaco(f);
+		}
+	    }
+	    catch (Exception ex)
+	    {
+		Console.WriteLine(ex.Message);
+	    }
+	}
 
-            f.Polling(0xfe00);
+	private static void readNanaco(Felica f)
+	{
+	    f.Polling((int)SystemCode.Common);
+	    byte[] data = f.ReadWithoutEncryption(0x558b, 0);
+	    if (data == null)
+	    {
+		throw new Exception("nanaco ID ‚ª“Ç‚ÝŽæ‚ê‚Ü‚¹‚ñ");
+	    }
+	    Console.Write("Nanaco ID = ");
+	    for (int i = 0; i < 8; i++) {
+		Console.Write(data[i].ToString("X2"));
+	    }
+	    Console.Write("\n");
 
             for (int i = 0; ; i++)
             {
-                byte[] data = f.ReadWithoutEncryption(0x564f, i);
+                data = f.ReadWithoutEncryption(0x564f, i);
                 if (data == null) break;
 
                 switch (data[0])

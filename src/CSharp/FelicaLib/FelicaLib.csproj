@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FelicaLib</RootNamespace>
-    <AssemblyName>FelicaLib</AssemblyName>
+    <AssemblyName>Nanaco</AssemblyName>
     <StartupObject>
     </StartupObject>
   </PropertyGroup>
