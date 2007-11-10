@@ -9,3 +9,5 @@ PaSoRi を使って FeliCa にアクセスするためのライブラリです。
 
 Visual Studio 2005 用のプロジェクトファイルを添付してあります。
 src\FelicaLib.sln を開いてビルドしてください。
+
+また、C# 用のプロジェクトは src\CSharp にあります。
