@@ -46,9 +46,11 @@ h1
 	font-size: 230%;
 	color: #A000A0;
 	background-color: #ececec;
-	border-left: 10px solid #000080;
-	border-top: 2px solid #000080;
-	padding-left: 10; padding-top: 3; padding-bottom: 3;
+	border-left: 16px solid #000080;
+	/*border-top: 2px solid #000080;*/
+	padding-left: 10px;
+	padding-top: 3px;
+	padding-bottom: 3px;
 }
 h2
 {
@@ -56,8 +58,10 @@ h2
 	color: #408080;
 	background-color: #ececec;
 	border-left: 6px solid #000080;
-	border-top: 2px solid #000080;
-	padding-left: 10; padding-top: 3; padding-bottom: 3;
+	border-top: 1px solid #000080;
+	padding-left: 10px;
+	padding-top: 3px; 
+	padding-bottom: 3px;
 }
 h3
 {
@@ -66,7 +70,9 @@ h3
 	background-color: #ececec;
 	border-left: 5px solid #006000;
 	/*border-top: 1px solid #006000;*/
-	padding-left: 10; padding-top: 2; padding-bottom: 2;
+	padding-left: 10px;
+	padding-top: 2px;
+	padding-bottom: 2px;
 }
 h4
 {
@@ -79,4 +85,7 @@ h5
 h6
 {
 	color: rgb(51,102,204);
+}
+p {
+	padding-left: 15px;
 }
