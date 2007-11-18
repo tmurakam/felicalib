@@ -43,11 +43,31 @@ body
 	background-color: #F0F9FF;
 }
 
+
 #contents {
-	width: 80%;
+	width: 800px;
 	margin: auto;
 	background-color: #FFFFFF;
-	text-align: left;	
+	text-align: left;
+}
+
+#header {
+	width: 800px;
+	padding-bottom: 10px;
+}
+	
+#main {
+	float: left;
+	width: 580px;
+	padding-left: 20px;
+}
+
+#ads {
+	width: 180px;
+	float: left;
+	padding-left: 0px;
+	padding-right: 0px;
+	text-align: right;
 }
 
 h1
