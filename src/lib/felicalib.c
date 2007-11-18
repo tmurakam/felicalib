@@ -206,7 +206,6 @@ int felica_read_without_encryption02(felica *f, int servicecode, int mode, uint8
 
    サービスコード、ブロック番号を指定してブロックを読み込む。
    システムコードは felica_polling で指定したものが使用される。
-
    注意!!! 本関数は未テスト!!!!!
 */
 int felica_write_without_encryption(felica *f, int servicecode, uint8 addr, uint8 *data)
