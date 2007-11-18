@@ -15,8 +15,12 @@
 </div>
 
 <div id="main">
+<h2>What's new?</h2>
+
+2007/11/18 : felicalib 0.3 リリース。非セキュリティエリア書き込みに対応。
+
 <h2>felicalibとは？</h2>
-<p>felicalib は、USB接続の FeliCa リーダ PaSoRi を使って、FeliCa にアクセスするためのライブラリです。Suica, Edy, nanaco などの電子マネーなどへのアクセスに使用できます。</p>
+<p>felicalib は、USB接続の FeliCa(フェリカ) リーダ PaSoRi(パソリ) を使って、FeliCa にアクセスするためのライブラリです。Suica, Edy, nanaco などの電子マネーへのアクセスなどに使用できます。</p>
 <p>通常、PaSoRi を制御するためには <a href="http://www.sony.co.jp/Products/felica/pdt/sdk.html">SDK for FeliCa</a> を使う必要がありますが、この SDK は10万円以上しますし、法人しか購入できないため、個人では手が出せません。</p>
 <p>また、<a href="http://libpasori.sourceforge.jp/">libpasori</a> というフリーのライブラリもありますが、Windows では libusb-win32 をインストールする必要があります。開発者はともかく、一般ユーザに libusb-win32 をインストールさせなければならないので、PaSoRi を使ったアプリの配布はちょっと気が引けます。</p>
 <p>felicalib は個人開発者が簡単に PaSoRi を使ったアプリケーションを開発するためのライブラリで、libusb-win32 なしで PaSoRi を制御できるフリーのライブラリです。</p>
@@ -28,10 +32,10 @@
   <li>libpasori API の下位互換</li>
   <li>C言語 API の他、C# API も提供</li>
 </ul>
-<p>IDm/PMm の読み取りや、暗号化されていないブロックの読み出し、システムコード・サービスコードの列挙などが可能です。一般的なアプリケーションであれば十分開発可能だと思います。</p>
+<p>IDm/PMm の読み取りや、暗号化されていないブロックの読み出しと書き込み、システムコード・サービスコードの列挙などが可能です。一般的なアプリケーションであれば十分開発可能だと思います。</p>
 <p>また、全ブロックをダンプするプログラム(libpasori の lpdump 相当) もあります。</p>
 <h2>ダウンロード</h2>
-<p><a href="http://sourceforge.jp/projects/felicalib/">プロジェクトページ</a>からダウンロードしてください。</p>
+
 <!-- Adsense バナー -->
 <script type="text/javascript"><!--
 google_ad_client = "pub-4621925249922081";
@@ -44,6 +48,7 @@ google_ad_height = 60;
 src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>
 
+<p><a href="http://sourceforge.jp/projects/felicalib/">プロジェクトページ</a>からダウンロードしてください。最新バージョンは 0.3 です (2007/11/18)</p>
 
 <h2>使い方</h2>
 <p>サンプルとして FelicaDump.exe を付けてあります (lpdumpと同じようなもの)。コマンドラインで実行すると、FeliCa の非セキュリティエリアをすべて読み出します。</p>
@@ -91,6 +96,13 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <p>本ライブラリは BSD Licence の元で自由に利用可能です。</p>
 <p>なお、本ライブラリの正確性、動作に関しては一切無保証です。</p>
 <p>PaSoRi(パソリ)、FeliCaは株式会社ソニーの登録商標です。本プロジェクトは  SONYまたはFeliCa技術を用いるその他企業ともいかなる関係もありません。</p>
+<h2>リンク</h2>
+<ul>
+  <li><a href="http://www.sony.co.jp/Products/felica/pcrw/">FeliCaポート/パソリサポート</a></li>
+  <li><a href="http://www.sony.co.jp/Products/felica/pdt/sdk.html">SDK for FeliCa</a></li>
+  <li><a href="http://libpasori.sourceforge.jp/">libpasori</a></li>
+  <li><a href="http://moneyimport.sourceforge.jp/">FeliCa2Money</a></li>
+</ul>
 </div>
 
 <!-- google adsense -->
@@ -110,7 +122,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
 </script>
 <script type="text/javascript">
-_uacct = "UA-413697-9";
+_uacct = "UA-413697-11";
 urchinTracker();
 </script>
 </div>
