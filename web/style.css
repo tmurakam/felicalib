@@ -22,25 +22,11 @@ a:active
 	color: rgb(255,153,0);
 }
 
-table
-{
-	table-border-color-light: rgb(255,204,102);
-	table-border-color-dark: rgb(204,153,102); 
-}
-
-body, th, td {
-	font-size: 11pt;
-}
-
 body
 {
-	/*font-family: Verdana, Arial, Helvetica;*/
-	/*background-color: rgb(255,255,204);*/
-	/*background-color: rgb(255,255,210);*/
-	/*color: rgb(102,102,51);*/
-	color: black;
 	text-align: center;
 	background-color: #F0F9FF;
+	font-size: 90%;
 }
 
 
@@ -68,6 +54,14 @@ body
 	padding-left: 0px;
 	padding-right: 0px;
 	text-align: right;
+}
+
+#footer {
+	width: 800px;
+	clear: both;
+	border-top: solid 1px #cccccc;
+	padding-top: 3px;
+	text-align: center;
 }
 
 h1
