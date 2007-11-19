@@ -20,10 +20,15 @@
 2007/11/18 : felicalib 0.3 リリース。非セキュリティエリア書き込みに対応。
 
 <h2>felicalibとは？</h2>
-<p>felicalib は、USB接続の FeliCa(フェリカ) リーダ PaSoRi(パソリ) を使って、FeliCa にアクセスするためのライブラリです。Suica, Edy, nanaco などの電子マネーへのアクセスなどに使用できます。</p>
+
+
+<p>felicalib は、USB接続の FeliCa(フェリカ) リーダ 
+<a href="http://www.amazon.co.jp/gp/search?ie=UTF8&keywords=%E3%83%91%E3%82%BD%E3%83%AA&tag=felicalib-22&index=fe-ce-jp&linkCode=ur2&camp=247&creative=1211">PaSoRi(パソリ)</a><img src="http://www.assoc-amazon.jp/e/ir?t=felicalib-22&amp;l=ur2&amp;o=9" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+を使って、FeliCa にアクセスするためのライブラリです。Suica, Edy, nanaco などの電子マネーへのアクセスなどに使用できます。</p>
 <p>通常、PaSoRi を制御するためには <a href="http://www.sony.co.jp/Products/felica/pdt/sdk.html">SDK for FeliCa</a> を使う必要がありますが、この SDK は10万円以上しますし、法人しか購入できないため、個人では手が出せません。</p>
 <p>また、<a href="http://libpasori.sourceforge.jp/">libpasori</a> というフリーのライブラリもありますが、Windows では libusb-win32 をインストールする必要があります。開発者はともかく、一般ユーザに libusb-win32 をインストールさせなければならないので、PaSoRi を使ったアプリの配布はちょっと気が引けます。</p>
 <p>felicalib は個人開発者が簡単に PaSoRi を使ったアプリケーションを開発するためのライブラリで、libusb-win32 なしで PaSoRi を制御できるフリーのライブラリです。</p>
+
 <h2>特徴</h2>
 <ul>
   <li>フリーソフト (BSD ライセンス)</li>
@@ -34,6 +39,7 @@
 </ul>
 <p>IDm/PMm の読み取りや、暗号化されていないブロックの読み出しと書き込み、システムコード・サービスコードの列挙などが可能です。一般的なアプリケーションであれば十分開発可能だと思います。</p>
 <p>また、全ブロックをダンプするプログラム(libpasori の lpdump 相当) もあります。</p>
+
 <h2>ダウンロード</h2>
 
 <!-- Adsense バナー -->
@@ -101,8 +107,9 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
   <li><a href="http://www.sony.co.jp/Products/felica/pcrw/">FeliCaポート/パソリサポート</a></li>
   <li><a href="http://www.sony.co.jp/Products/felica/pdt/sdk.html">SDK for FeliCa</a></li>
   <li><a href="http://libpasori.sourceforge.jp/">libpasori</a></li>
+  <li><a href="http://www.tmurakam.org">作者のサイト</a> および <a href="http://d.hatena.ne.jp/tmurakam/">ブログ</a></li>
   <li><a href="http://moneyimport.sourceforge.jp/">FeliCa2Money</a></li>
-</ul>
+  </ul>
 </div>
 
 <!-- google adsense -->
