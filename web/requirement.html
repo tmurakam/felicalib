@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>felicalib - FeliCa Library : Documents</title>
+<title>felicalib - FeliCa Library : Requirements</title>
 <!-- InstanceEndEditable -->
 <meta name="keywords" content="felicalib,felica,フェリカ,モバイルフェリカ,電子マネー,Edy,パソリ,edyクレジット,edyカード,felicaカード" />
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -42,20 +42,17 @@
 </div>
 
 <div id="main"><!-- InstanceBeginEditable name="EditRegion3" -->
-<h2>使い方</h2>
-<p>サンプルとして FelicaDump.exe を付けてあります (lpdumpと同じようなもの)。コマンドラインで実行すると、FeliCa の非セキュリティエリアをすべて読み出します。</p>
-<p>
-本ライブラリをあなたのプログラムから使用する手順については、
-<a href="http://sourceforge.jp/projects/felicalib/wiki/FrontPage">Wiki</a> の「プログラムから felicalibを利用する方法」を参照してください。
-</p>
+<h2>必要環境</h2>
 
-<h2>ドキュメント</h2>
-
+<p>開発に必要な環境は以下の通りです。 </p>
 <ul>
-<li><a href="refdoc/">APIドキュメント</a></li>
+  <li>Windows 2000/XP/Vista</li>
+  <li>FeliCaポート/パソリ(PaSoRi)</li>
+  <li><a href="http://www.sony.co.jp/Products/felica/pcrw/">FeliCa ポートソフトウェア</a></li>
+  <li>開発環境（コンパイラ)</li>
 </ul>
-
-<!-- #BeginLibraryItem "/Library/AdsenseBanner.lbi" -->
+<p>&nbsp;</p>
+<p><!-- #BeginLibraryItem "/Library/AdsenseBanner.lbi" -->
 <!-- Adsense バナー -->
 <script type="text/javascript"><!--
 google_ad_client = "pub-4621925249922081";
@@ -67,27 +64,18 @@ google_ad_height = 60;
 <script type="text/javascript"
 src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>
-<!-- #EndLibraryItem -->
+<!-- #EndLibraryItem --></p>
 
-<h2>libpasori との互換性</h2>
-<p>以下の API は互換性があります。</p>
-<ul>
-  <li>pasori_open</li>
-  <li>pasori_close</li>
-  <li>pasori_init</li>
-  <li>felica_polling</li>
-  <li>felica_read_without_encryption02</li>
-</ul>
-<p>以下の API は実装されていません。</p>
-<ul><li>pasori_write</li>
-  <li>pasori_read</li>
-</ul>
-<p>以下の API が追加されています。</p>
-<ul>
-  <li>felica_enum_systemcode</li>
-  <li>felica_enum_service</li>
-</ul>
-<p>詳細はソースを見てください。</p>
+<p>FeliCaポート/パソリは RC-S320シリーズ、RC-S310/J1C, RC-S310/ED4C が使えるはずです。推奨は RC-S320です。</p>
+
+<p>開発言語としては、C/C++ および C# が使えます。開発環境としては Visual Studio 2005 を推奨。個人的には Standard Edition をお勧めしますが、Express Edition でも動作すると思います(Framework SDK などのインストールは別途必要)。</p>
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?t=felicalib-22&o=9&p=8&l=as1&asins=B0009YVAW4&fc1=000000&IS2=1&lt1=_blank&lc1=0000FF&bc1=FFFFFF&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?t=felicalib-22&o=9&p=8&l=as1&asins=B000CSPMYO&fc1=000000&IS2=1&lt1=_blank&lc1=0000FF&bc1=FFFFFF&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+
+
 
 <!-- InstanceEndEditable --></div>
 
