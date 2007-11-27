@@ -31,7 +31,7 @@ body
 
 
 #contents {
-	width: 800px;
+	width: 900px;
 	margin: auto;
 	background-color: #FFFFFF;
 	text-align: left;
@@ -39,10 +39,27 @@ body
 }
 
 #header {
-	width: 800px;
+	width: 900px;
 	padding-bottom: 10px;
 }
 	
+#menubar {
+	float: left;
+	width: 120px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+}
+
+.menuentry {
+	font-size: 100%;
+	border: 1px solid #CCCCCC;
+	border-left: 12px solid #B2CDEC;
+	padding: 3px;
+	margin: 3px;
+	margin-left: 1px;
+	background-color: #FFFFFF;
+}
+
 #main {
 	float: left;
 	width: 580px;
@@ -59,7 +76,7 @@ body
 }
 
 #footer {
-	width: 800px;
+	width: 900px;
 	clear: both;
 	border-top: solid 1px #cccccc;
 	padding: 8px;
