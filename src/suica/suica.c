@@ -75,6 +75,7 @@ int _tmain(int argc, _TCHAR *argv[])
     for (i = 0; i < 8; i++) {
 	printf("%02x", f->IDm[i]);
     }
+    printf("\n");
 
     for (i = 0; ; i++) {
 	if (felica_read_without_encryption02(f, SERVICE_SUICA_HISTORY, 0, (uint8)i, data)) {
