@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FelicaDump", "dump\FelicaDump.vcproj", "{4FBA68A2-C69E-4B45-86D0-C4409C2D0516}"
 	ProjectSection(ProjectDependencies) = postProject
 		{6C207D2C-38B7-4C66-B1C6-7A74F59F2583} = {6C207D2C-38B7-4C66-B1C6-7A74F59F2583}
@@ -12,6 +12,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nanaco", "nanaco\nanaco.vcp
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "felicalib", "lib\felicalib.vcproj", "{6C207D2C-38B7-4C66-B1C6-7A74F59F2583}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "suica", "suica\suica.vcproj", "{C547D062-D5A6-42CD-AF26-7A24FB814FA1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6C207D2C-38B7-4C66-B1C6-7A74F59F2583} = {6C207D2C-38B7-4C66-B1C6-7A74F59F2583}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +58,16 @@ Global
 		{6C207D2C-38B7-4C66-B1C6-7A74F59F2583}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{6C207D2C-38B7-4C66-B1C6-7A74F59F2583}.Release|Win32.ActiveCfg = Release|Win32
 		{6C207D2C-38B7-4C66-B1C6-7A74F59F2583}.Release|Win32.Build.0 = Release|Win32
+		{C547D062-D5A6-42CD-AF26-7A24FB814FA1}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{C547D062-D5A6-42CD-AF26-7A24FB814FA1}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{C547D062-D5A6-42CD-AF26-7A24FB814FA1}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{C547D062-D5A6-42CD-AF26-7A24FB814FA1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C547D062-D5A6-42CD-AF26-7A24FB814FA1}.Debug|Win32.Build.0 = Debug|Win32
+		{C547D062-D5A6-42CD-AF26-7A24FB814FA1}.Release|Any CPU.ActiveCfg = Release|Win32
+		{C547D062-D5A6-42CD-AF26-7A24FB814FA1}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{C547D062-D5A6-42CD-AF26-7A24FB814FA1}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{C547D062-D5A6-42CD-AF26-7A24FB814FA1}.Release|Win32.ActiveCfg = Release|Win32
+		{C547D062-D5A6-42CD-AF26-7A24FB814FA1}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
