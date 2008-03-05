@@ -137,9 +137,10 @@ static void suica_dump_history(uint8 *data)
 
     // 
     if (time > 0) {
-        int hh = time >> 6;
-        int mm = (time & 0x3f);
-        printf(" %02d:%02d ", hh, mm);
+        int hh = time >> 11;
+        int min = (time >> 5) & 0x3f;
+
+        printf(" %02d:%02d ", hh, min);
     }
     
     printf("“ü:%x/%x ", in_line, in_sta);
