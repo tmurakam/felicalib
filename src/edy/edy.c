@@ -47,7 +47,7 @@ static int read4b(uint8 *p);
 static int read2b(uint8 *p);
 
 // サービスコード
-#define SERVICE_EDY     0x1317
+#define SERVICE_EDY     0x170f
 
 
 int _tmain(int argc, _TCHAR *argv[])
@@ -59,27 +59,28 @@ int _tmain(int argc, _TCHAR *argv[])
 
     p = pasori_open(NULL);
     if (!p) {
-	fprintf(stderr, "PaSoRi open failed.\n");
-	exit(1);
+        fprintf(stderr, "PaSoRi open failed.\n");
+        exit(1);
     }
     pasori_init(p);
     
     f = felica_polling(p, POLLING_EDY, 0, 0);
     if (!f) {
-	fprintf(stderr, "Polling card failed.\n");
-	exit(1);
+        fprintf(stderr, "Polling card failed.\n");
+        exit(1);
     }
 
     printf("IDm: ");
     for (i = 0; i < 8; i++) {
-	printf("%02x", f->IDm[i]);
+        printf("%02x", f->IDm[i]);
     }
+	printf("\n");
 
     for (i = 0; ; i++) {
-	if (felica_read_without_encryption02(f, SERVICE_EDY, 0, (uint8)i, data)) {
-	    break;
-	}
-	edy_dump(data);
+        if (felica_read_without_encryption02(f, SERVICE_EDY, 0, (uint8)i, data)) {
+            break;
+        }
+        edy_dump(data);
     }
 
     return 0;
@@ -115,8 +116,8 @@ static void edy_dump(uint8 *data)
         break;
     }
 
-    printf("金額:%d ", value);
-    printf("残高:%d ", balance);
+    printf("金額:%-5d ", value);
+    printf("残高:%-5d ", balance);
     printf("連番:%d\n", seq);
 }
 
