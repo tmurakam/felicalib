@@ -39,6 +39,10 @@
 #include "felicalib.h"
 #include "felicaint.h"
 
+#include <tchar.h>
+#include <shlobj.h>
+#include <stdio.h>
+
 /**
    @brief PaSoRi をオープンする
    @param[in] dummy ダミー (libpasori との互換性のため)
@@ -49,14 +53,18 @@
 pasori *pasori_open(char *dummy)
 {
     pasori *p;
+	TCHAR cp[_MAX_PATH], dllpath[_MAX_PATH];
 
-    p = (pasori *)malloc(sizeof(pasori));
-    
+	/* get felica.dll path */
+	SHGetSpecialFolderPath(NULL, cp, CSIDL_PROGRAM_FILES_COMMON, FALSE);
+	_stprintf(dllpath, _T("%s\\Sony Shared\\FeliCaLibrary\\felica.dll"), cp);
+
     /* open felica.dll */
-    p->hInstDLL = LoadLibrary(_T("C:\\Program Files\\Common Files\\Sony Shared\\FeliCaLibrary\\felica.dll"));
+    p = (pasori *)malloc(sizeof(pasori));
+	p->hInstDLL = LoadLibrary(dllpath);
     if (p->hInstDLL == NULL) {
-	free(p);
-	return NULL;
+		free(p);
+		return NULL;
     }
 	
     /* resolve function pointers */
@@ -72,8 +80,8 @@ pasori *pasori_open(char *dummy)
     resolve_entry(write_block_without_encryption);
 
     if (!p->initialize_library()) {
-	free(p);
-	return NULL;
+		free(p);
+		return NULL;
     }
     return p;
 }
@@ -98,7 +106,7 @@ void pasori_close(pasori *p)
 int pasori_init(pasori *p)
 {
     if (!p->open_reader_writer_auto()) {
-	return -1;
+		return -1;
     }
     return 0;
 }
@@ -138,9 +146,9 @@ felica *felica_polling(pasori *p, uint16 systemcode, uint8 RFU, uint8 timeslot)
     card_info.card_pmm = f->PMm;
 
     if (!p->polling_and_get_card_information(&polling, &number_of_cards, &card_info) ||
-	number_of_cards == 0) {
-	free(f);
-	return NULL;
+		number_of_cards == 0) {
+		free(f);
+		return NULL;
     }
 
     return f;
@@ -184,11 +192,11 @@ int felica_read_without_encryption02(felica *f, int servicecode, int mode, uint8
     orb.result_number_of_blocks = &result_number_of_blocks;
     orb.block_data = data;
 
-    if (!f->p->read_block_without_encryption(&irb, &orb)) {
-	return -1;
+	if (!f->p->read_block_without_encryption(&irb, &orb)) {
+		return -1;
     }
     if (status_flag1 != 0) {
-	return -1;
+		return -1;
     }
     return 0;
 }
@@ -233,10 +241,10 @@ int felica_write_without_encryption(felica *f, int servicecode, uint8 addr, uint
     orb.status_flag_2 = &status_flag2;
 
     if (!f->p->write_block_without_encryption(&irb, &orb)) {
-	return -1;
+		return -1;
     }
     if (status_flag1 != 0) {
-	return -1;
+		return -1;
     }
     return 0;
 }
@@ -299,8 +307,8 @@ felica * felica_enum_systemcode(pasori *p)
     ors.system_code_list = (uint8 *)f->system_code;
 
     if (!f->p->polling_and_request_system_code(&polling, &irs, &card_info, &ors)) {
-	free(f);
-	return NULL;
+		free(f);
+		return NULL;
     }
 
     f->num_system_code = ors.number_of_system_codes;
@@ -344,8 +352,8 @@ felica * felica_enum_service(pasori *p, uint16 systemcode)
     oss.end_service_code_list = (uint8 *)f->end_service_code;
     
     if (!f->p->polling_and_search_service_code(&polling, &iss, &card_info, &oss)) {
-	free(f);
-	return NULL;
+		free(f);
+		return NULL;
     }
 
     f->num_area_code = oss.num_area_codes;
