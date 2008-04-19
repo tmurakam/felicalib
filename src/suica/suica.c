@@ -60,28 +60,28 @@ int _tmain(int argc, _TCHAR *argv[])
 
     p = pasori_open(NULL);
     if (!p) {
-	fprintf(stderr, "PaSoRi open failed.\n");
-	exit(1);
+        fprintf(stderr, "PaSoRi open failed.\n");
+        exit(1);
     }
     pasori_init(p);
     
     f = felica_polling(p, POLLING_SUICA, 0, 0);
     if (!f) {
-	fprintf(stderr, "Polling card failed.\n");
-	exit(1);
+        fprintf(stderr, "Polling card failed.\n");
+        exit(1);
     }
 
     printf("IDm: ");
     for (i = 0; i < 8; i++) {
-	printf("%02x", f->IDm[i]);
+        printf("%02x", f->IDm[i]);
     }
     printf("\n");
 
     for (i = 0; ; i++) {
-	if (felica_read_without_encryption02(f, SERVICE_SUICA_HISTORY, 0, (uint8)i, data)) {
-	    break;
-	}
-	suica_dump_history(data);
+        if (felica_read_without_encryption02(f, SERVICE_SUICA_HISTORY, 0, (uint8)i, data)) {
+            break;
+        }
+        suica_dump_history(data);
     }
 
     return 0;

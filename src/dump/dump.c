@@ -51,15 +51,15 @@ int _tmain(int argc, _TCHAR *argv[])
 
     p = pasori_open(NULL);
     if (!p) {
-	fprintf(stderr, "PaSoRi open failed.\n");
-	exit(1);
+		fprintf(stderr, "PaSoRi open failed.\n");
+		exit(1);
     }
     pasori_init(p);
     
     f = felica_polling(p, POLLING_ANY, 0, 0);
     if (!f) {
-	fprintf(stderr, "Polling card failed.\n");
-	exit(1);
+		fprintf(stderr, "Polling card failed.\n");
+		exit(1);
     }
     printf("# IDm: ");
     hexdump(f->IDm, 8);
@@ -71,7 +71,7 @@ int _tmain(int argc, _TCHAR *argv[])
 
     f = felica_enum_systemcode(p);
     if (!f) {
-	exit(1);
+		exit(1);
     }
 
     for (i = 0; i < f->num_system_code; i++) {
@@ -93,16 +93,16 @@ int _tmain(int argc, _TCHAR *argv[])
 	    printserviceinfo(service);
 
 	    for (k = 0; k < 255; k++) {
-		uint8 data[16];
+			uint8 data[16];
 
-		if (felica_read_without_encryption02(f2, service, 0, (uint8)k, data)) {
-		    break;
-		}
+			if (felica_read_without_encryption02(f2, service, 0, (uint8)k, data)) {
+				break;
+			}
 		
-		printf("%04X:%04X ", service, k);
-		hexdump(data, 16);
-		printf("\n");
-	    }
+			printf("%04X:%04X ", service, k);
+			hexdump(data, 16);
+			printf("\n");
+		}
 	}
 	printf("\n");
     }
@@ -115,9 +115,9 @@ static void printserviceinfo(uint16 s)
     char *ident;
 
     switch ((s >> 1) & 0xf) {
-    case 0: ident = "Area Code"; break;
-    case 4: ident = "Random Access R/W"; break; 
-    case 5: ident = "Random Access Read only"; break; 
+	case 0: ident = "Area Code"; break;
+	case 4: ident = "Random Access R/W"; break; 
+	case 5: ident = "Random Access Read only"; break; 
     case 6: ident = "Cyclic Access R/W"; break; 
     case 7: ident = "Cyclic Access Read only"; break; 
     case 8: ident = "Purse (Direct)"; break;
@@ -129,7 +129,7 @@ static void printserviceinfo(uint16 s)
 
     printf("# Serivce code = %04X : %s", s, ident);
     if ((s & 0x1) == 0) {
-	printf(" (Protected)");
+		printf(" (Protected)");
     }
     printf("\n");
 }
@@ -138,6 +138,6 @@ static void hexdump(uint8 *addr, int n)
 {
     int i;
     for (i = 0; i < n; i++) {
-	printf("%02X ", addr[i]);
+		printf("%02X ", addr[i]);
     }
 }

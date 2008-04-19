@@ -1,39 +1,39 @@
 /*
- felicalib - FeliCa access wrapper library
+  felicalib - FeliCa access wrapper library
 
- Copyright (c) 2007, Takuya Murakami, All rights reserved.
+  Copyright (c) 2007, Takuya Murakami, All rights reserved.
 
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions are
- met:
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions are
+  met:
 
- 1. Redistributions of source code must retain the above copyright notice,
-    this list of conditions and the following disclaimer. 
+  1. Redistributions of source code must retain the above copyright notice,
+  this list of conditions and the following disclaimer. 
 
- 2. Redistributions in binary form must reproduce the above copyright
-    notice, this list of conditions and the following disclaimer in the
-    documentation and/or other materials provided with the distribution. 
+  2. Redistributions in binary form must reproduce the above copyright
+  notice, this list of conditions and the following disclaimer in the
+  documentation and/or other materials provided with the distribution. 
 
- 3. Neither the name of the project nor the names of its contributors
-    may be used to endorse or promote products derived from this software
-    without specific prior written permission. 
+  3. Neither the name of the project nor the names of its contributors
+  may be used to endorse or promote products derived from this software
+  without specific prior written permission. 
 
- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+  CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 /**
-  @file nanaco.c
+   @file nanaco.c
 
-  nanaco ダンプ
+   nanaco ダンプ
 */
 
 #include <stdio.h>
@@ -53,33 +53,33 @@ int _tmain(int argc, _TCHAR *argv[])
 
     p = pasori_open(NULL);
     if (!p) {
-	fprintf(stderr, "PaSoRi open failed.\n");
-	exit(1);
+        fprintf(stderr, "PaSoRi open failed.\n");
+        exit(1);
     }
     pasori_init(p);
     
     f = felica_polling(p, 0xfe00, 0, 0);
     if (!f) {
-	fprintf(stderr, "Polling card failed.\n");
-	exit(1);
+        fprintf(stderr, "Polling card failed.\n");
+        exit(1);
     }
 
     if (felica_read_without_encryption02(f, 0x558b, 0, 0, data)) {
-	fprintf(stderr, "Can't read nanaco ID.\n");
-	exit(1);
+        fprintf(stderr, "Can't read nanaco ID.\n");
+        exit(1);
     }
 
     printf("nanaco id: ");
     for (i = 0; i < 8; i++) {
-	printf("%02x", data[i]);
+        printf("%02x", data[i]);
     }
     printf("\n");
 
     for (i = 0; ; i++) {
-	if (felica_read_without_encryption02(f, 0x564f, 0, (uint8)i, data)) {
-	    break;
-	}
-	nanaco_dump(data);
+        if (felica_read_without_encryption02(f, 0x564f, 0, (uint8)i, data)) {
+            break;
+        }
+        nanaco_dump(data);
     }
 
     return 0;
@@ -91,14 +91,14 @@ static void nanaco_dump(uint8 *data)
 
     switch (data[0]) {
     case 0x47:
-	printf("支払     ");
-	break;
+        printf("支払     ");
+        break;
     case 0x6f:
-	printf("チャージ ");
-	break;
+        printf("チャージ ");
+        break;
     default:
-	printf("不明     ");
-	break;
+        printf("不明     ");
+        break;
     }
 
     value = read4b(data + 1);
@@ -136,5 +136,3 @@ static int read2b(uint8 *p)
     v |= *p;
     return v;
 }
-
-

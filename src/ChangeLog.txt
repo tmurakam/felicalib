@@ -1,17 +1,27 @@
-* 2007/11/05 : v0.1
+2008-04-19 : Takuya Murakami
+           * indentation を修正
 
-  - 初版
+2008-04-15 : Takuya Murakami
+           * x64 環境で動作しない問題に対処
+             Program Files フォルダ名が埋め込みだったため。
+             SHGetSpecialFolderPath を使用するように修正
+           * C# サンプルのビルドターゲットを Any CPU から x86 に変更
+             x64環境では Any CPU では動作しないため。
 
-* 2007/11/10 : v0.2
-  
-  - ライブラリを DLL に分離
-  - nanaco.exe を追加
-  - C# サポートを追加
+2008-03-06 : Takuya Murakami
+           * Suica/Edy 読み込みサンプルを追加
 
-* 2007/11/18 : v0.3
-  
-  - 非セキュリティエリア書き込み対応
+2007-11-18 : Takuya Murakami
+           * ver 0.3
+           * 非セキュリティエリア書き込み対応
 
-* 2008/3/6
+2007-11-10 : Takuya Murakami
+           * ver 0.2
+           * ライブラリを DLL に分離
+           * nanaco.exe を追加
+           * C# サポートを追加
 
-  - Suica/Edy 読み込みサンプルを追加
+2007-11-05 : Takuya Murakami
+           * ver 0.1
+           * 初版
+

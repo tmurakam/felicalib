@@ -165,6 +165,10 @@
 		</Configuration>
 	</Configurations>
 	<References>
+		<ProjectReference
+			ReferencedProjectIdentifier="{6C207D2C-38B7-4C66-B1C6-7A74F59F2583}"
+			RelativePathToProject=".\lib\felicalib.vcproj"
+		/>
 	</References>
 	<Files>
 		<Filter
