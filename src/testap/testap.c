@@ -51,31 +51,31 @@ int _tmain(int argc, _TCHAR *argv[])
 
     p = pasori_open(NULL);
     if (!p) {
-	fprintf(stderr, "PaSoRi open failed.\n");
-	exit(1);
+        fprintf(stderr, "PaSoRi open failed.\n");
+        exit(1);
     }
     pasori_init(p);
     
     f = felica_polling(p, 0x80cd, 0, 0);
     if (!f) {
-	fprintf(stderr, "Polling card failed.\n");
-	exit(1);
+        fprintf(stderr, "Polling card failed.\n");
+        exit(1);
     }
 
     for (i = 0; i < 16; i++) {
-	data[i] = i;
+        data[i] = i;
     }
 
     if (felica_write_without_encryption(f, 0x1009, 0, data)) {
-	fprintf(stderr, "write failed.\n");
-	exit(1);
+        fprintf(stderr, "write failed.\n");
+        exit(1);
     }
     if (felica_read_without_encryption02(f, 0x1009, 0, 0, data)) {
-	fprintf(stderr, "Can't read.\n");
-	exit(1);
+        fprintf(stderr, "Can't read.\n");
+        exit(1);
     }
     for (i = 0; i < 16; i++) {
-	printf("%02x", data[i]);
+        printf("%02x", data[i]);
     }
     printf("\n");
     return 0;

@@ -1,5 +1,7 @@
 2008-04-19 : Takuya Murakami
-           * indentation を修正
+           * ver 0.4
+           * バージョンリソース追加
+           * 一部ソースのインデント修正
 
 2008-04-15 : Takuya Murakami
            * x64 環境で動作しない問題に対処

@@ -62,6 +62,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				Version=""
 				ModuleDefinitionFile="felicalib.def"
 				GenerateDebugInformation="true"
 				RandomizedBaseAddress="1"
@@ -133,6 +134,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				Version=""
 				ModuleDefinitionFile="felicalib.def"
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
@@ -186,6 +188,10 @@
 				RelativePath="..\include\felicalib.h"
 				>
 			</File>
+			<File
+				RelativePath=".\resource.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="リソース ファイル"
@@ -194,6 +200,10 @@
 			>
 			<File
 				RelativePath=".\felicalib.def"
+				>
+			</File>
+			<File
+				RelativePath=".\felicalib.rc"
 				>
 			</File>
 		</Filter>

@@ -9,32 +9,32 @@ namespace FelicaLib
     {
         public static void Main()
         {
-	    try
-	    {
-		using (Felica f = new Felica())
-		{
-		    readNanaco(f);
-		}
-	    }
-	    catch (Exception ex)
-	    {
-		Console.WriteLine(ex.Message);
-	    }
-	}
+            try
+            {
+                using (Felica f = new Felica())
+                {
+                    readNanaco(f);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
 
-	private static void readNanaco(Felica f)
-	{
-	    f.Polling((int)SystemCode.Common);
-	    byte[] data = f.ReadWithoutEncryption(0x558b, 0);
-	    if (data == null)
-	    {
-		throw new Exception("nanaco ID ‚ª“Ç‚ÝŽæ‚ê‚Ü‚¹‚ñ");
-	    }
-	    Console.Write("Nanaco ID = ");
-	    for (int i = 0; i < 8; i++) {
-		Console.Write(data[i].ToString("X2"));
-	    }
-	    Console.Write("\n");
+        private static void readNanaco(Felica f)
+        {
+            f.Polling((int)SystemCode.Common);
+            byte[] data = f.ReadWithoutEncryption(0x558b, 0);
+            if (data == null)
+            {
+                throw new Exception("nanaco ID ‚ª“Ç‚ÝŽæ‚ê‚Ü‚¹‚ñ");
+            }
+            Console.Write("Nanaco ID = ");
+            for (int i = 0; i < 8; i++) {
+                Console.Write(data[i].ToString("X2"));
+            }
+            Console.Write("\n");
 
             for (int i = 0; ; i++)
             {
