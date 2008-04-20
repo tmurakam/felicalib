@@ -1,3 +1,8 @@
+2008-04-20 : Takuya Murakami
+           * ver 0.4.1
+           * felicalib.dll が MSVCRT.dll を参照していたため、
+             MSVCRT.dll がない環境で動作しなかった問題を修正。
+
 2008-04-19 : Takuya Murakami
            * ver 0.4
            * バージョンリソース追加
