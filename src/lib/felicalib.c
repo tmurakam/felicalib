@@ -114,6 +114,7 @@ int pasori_init(pasori *p)
 static felica *alloc_felica(pasori *p, uint16 systemcode)
 {
     felica *f = (felica *)malloc(sizeof(felica));
+    memset(f, 0, sizeof(felica));
     f->p = p;
     f->systemcode = H2NS(systemcode);
 

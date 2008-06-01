@@ -67,7 +67,7 @@ int _tmain(int argc, _TCHAR *argv[])
     printf("# PMm: ");
     hexdump(f->PMm, 8);
     printf("\n\n");
-    free(f);
+    felica_free(f);
 
     f = felica_enum_systemcode(p);
     if (!f) {
@@ -105,7 +105,10 @@ int _tmain(int argc, _TCHAR *argv[])
             }
         }
         printf("\n");
+        felica_free(f2);
     }
+
+    felica_free(f);
 
     return 0;
 }
