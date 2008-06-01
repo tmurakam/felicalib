@@ -109,6 +109,7 @@ int _tmain(int argc, _TCHAR *argv[])
     }
 
     felica_free(f);
+    pasori_close(p);
 
     return 0;
 }

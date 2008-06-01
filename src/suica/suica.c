@@ -84,6 +84,9 @@ int _tmain(int argc, _TCHAR *argv[])
         suica_dump_history(data);
     }
 
+    felica_free(f);
+    pasori_close(p);
+
     return 0;
 }
 

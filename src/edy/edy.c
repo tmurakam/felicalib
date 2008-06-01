@@ -82,6 +82,8 @@ int _tmain(int argc, _TCHAR *argv[])
         }
         edy_dump(data);
     }
+    felica_free(f);
+    pasori_close(p);
 
     return 0;
 }
@@ -110,6 +112,9 @@ static void edy_dump(uint8 *data)
         break;
     case 0x20:
         printf("Žx•¥‚¢   ");
+        break;
+    case 0x04:
+        printf("ƒMƒtƒg   ");
         break;
     default:
         printf("????     ");

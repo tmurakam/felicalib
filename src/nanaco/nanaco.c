@@ -81,6 +81,8 @@ int _tmain(int argc, _TCHAR *argv[])
         }
         nanaco_dump(data);
     }
+    felica_free(f);
+    pasori_close(p);
 
     return 0;
 }
