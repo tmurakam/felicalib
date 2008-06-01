@@ -1,3 +1,7 @@
+2008-06-01 : Takuya Murakami
+           * ver 0.4.2
+           * FelicaDump.exe がクラッシュする問題を修正。
+
 2008-04-20 : Takuya Murakami
            * ver 0.4.1
            * felicalib.dll が MSVCRT.dll を参照していたため、
