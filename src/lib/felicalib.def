@@ -2,6 +2,7 @@ LIBRARY	"felicalib"
 
 EXPORTS
     pasori_open
+	pasori_open2
     pasori_close
     pasori_init
     felica_polling

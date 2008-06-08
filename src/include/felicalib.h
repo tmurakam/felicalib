@@ -99,6 +99,7 @@ extern "C" {
 #endif
 
 pasori *pasori_open(char *);
+pasori *pasori_open2(TCHAR *);
 void pasori_close(pasori *);
 
 int pasori_init(pasori *);

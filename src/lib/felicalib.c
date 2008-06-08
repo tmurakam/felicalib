@@ -52,12 +52,18 @@
 */
 pasori *pasori_open(char *dummy)
 {
-    pasori *p;
     TCHAR cp[_MAX_PATH], dllpath[_MAX_PATH];
 
     /* get felica.dll path */
     SHGetSpecialFolderPath(NULL, cp, CSIDL_PROGRAM_FILES_COMMON, FALSE);
     _stprintf(dllpath, _T("%s\\Sony Shared\\FeliCaLibrary\\felica.dll"), cp);
+
+    return pasori_open2(dllpath);
+}
+
+pasori *pasori_open2(TCHAR *dllpath)
+{
+    pasori *p;
 
     /* open felica.dll */
     p = (pasori *)malloc(sizeof(pasori));
