@@ -56,7 +56,7 @@ pasori *pasori_open(char *dummy)
 
     /* get felica.dll path */
     SHGetSpecialFolderPath(NULL, cp, CSIDL_PROGRAM_FILES_COMMON, FALSE);
-    _stprintf(dllpath, _T("%s\\Sony Shared\\FeliCaLibrary\\felica.dll"), cp);
+    _stprintf_s(dllpath, _countof(dllpath), _T("%s\\Sony Shared\\FeliCaLibrary\\felica.dll"), cp);
 
     return pasori_open2(dllpath);
 }
