@@ -37,6 +37,9 @@
 */
 
 #include <stdio.h>
+#include <windows.h>
+#include <tchar.h>
+#include <locale.h>
 
 #include "felicalib.h"
 
@@ -51,29 +54,31 @@ int _tmain(int argc, _TCHAR *argv[])
     int i;
     uint8 data[16];
 
+        setlocale( LC_ALL, "Japanese");
+
     p = pasori_open(NULL);
     if (!p) {
-        fprintf(stderr, "PaSoRi open failed.\n");
+        _ftprintf(stderr, _T("PaSoRi open failed.\n"));
         exit(1);
     }
     pasori_init(p);
     
     f = felica_polling(p, 0xfe00, 0, 0);
     if (!f) {
-        fprintf(stderr, "Polling card failed.\n");
+        _ftprintf(stderr, _T("Polling card failed.\n"));
         exit(1);
     }
 
     if (felica_read_without_encryption02(f, 0x558b, 0, 0, data)) {
-        fprintf(stderr, "Can't read nanaco ID.\n");
+        _ftprintf(stderr, _T("Can't read nanaco ID.\n"));
         exit(1);
     }
 
-    printf("nanaco id: ");
+    _tprintf(_T("nanaco id: "));
     for (i = 0; i < 8; i++) {
-        printf("%02x", data[i]);
+        _tprintf(_T("%02x"), data[i]);
     }
-    printf("\n");
+    _tprintf(_T("\n"));
 
     for (i = 0; ; i++) {
         if (felica_read_without_encryption02(f, 0x564f, 0, (uint8)i, data)) {
@@ -93,21 +98,21 @@ static void nanaco_dump(uint8 *data)
 
     switch (data[0]) {
     case 0x47:
-        printf("Žx•¥     ");
+        _tprintf(_T("Žx•¥     "));
         break;
     case 0x6f:
-        printf("ƒ`ƒƒ[ƒW ");
+        _tprintf(_T("ƒ`ƒƒ[ƒW "));
         break;
     default:
-        printf("•s–¾     ");
+        _tprintf(_T("•s–¾     "));
         break;
     }
 
     value = read4b(data + 1);
-    printf("‹àŠz:%-6d‰~ ", value);
+    _tprintf(_T("‹àŠz:%-6d‰~ "), value);
 
     value = read4b(data + 5);
-    printf("Žc‚:%-6d‰~ ", value);
+    _tprintf(_T("Žc‚:%-6d‰~ "), value);
 
     value = read4b(data + 9);
     yy = value >> 21;
@@ -115,10 +120,10 @@ static void nanaco_dump(uint8 *data)
     dd = (value >> 12) & 0x1f;
     hh = (value >> 6) & 0x3f;
     min = value & 0x3f;
-    printf("%02d/%02d/%02d %02d:%02d ", yy, mm, dd, hh, min);
+    _tprintf(_T("%02d/%02d/%02d %02d:%02d "), yy, mm, dd, hh, min);
 
     value = read2b(data + 13);
-    printf("˜A”Ô: %d\n", value);
+    _tprintf(_T("˜A”Ô: %d\n"), value);
 }
 
 static int read4b(uint8 *p)
