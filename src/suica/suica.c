@@ -37,12 +37,14 @@
 */
 
 #include <stdio.h>
-
+#include <windows.h>
+#include <tchar.h>
+#include <locale.h>
 #include "felicalib.h"
 
 static void suica_dump_history(uint8 *data);
-static const char *consoleType(int ctype);
-static const char *procType(int proc);
+static LPCTSTR consoleType(int ctype);
+static LPCTSTR procType(int proc);
 static int read4b(uint8 *p);
 static int read2b(uint8 *p);
 
@@ -58,24 +60,26 @@ int _tmain(int argc, _TCHAR *argv[])
     int i;
     uint8 data[16];
 
+    setlocale( LC_ALL, "Japanese");
+
     p = pasori_open(NULL);
     if (!p) {
-        fprintf(stderr, "PaSoRi open failed.\n");
+        _ftprintf(stderr, _T("PaSoRi open failed.\n"));
         exit(1);
     }
     pasori_init(p);
     
     f = felica_polling(p, POLLING_SUICA, 0, 0);
     if (!f) {
-        fprintf(stderr, "Polling card failed.\n");
+        _ftprintf(stderr, _T("Polling card failed.\n"));
         exit(1);
     }
 
-    printf("IDm: ");
+    _tprintf(_T("IDm: "));
     for (i = 0; i < 8; i++) {
-        printf("%02x", f->IDm[i]);
+        _tprintf(_T("%02x"), f->IDm[i]);
     }
-    printf("\n");
+    _tprintf(_T("\n"));
 
     for (i = 0; ; i++) {
         if (felica_read_without_encryption02(f, SERVICE_SUICA_HISTORY, 0, (uint8)i, data)) {
@@ -130,68 +134,68 @@ static void suica_dump_history(uint8 *data)
         break;
     }
 
-    printf("端末種:%s ", consoleType(ctype));
-    printf("処理:%s ", procType(proc));
+    _tprintf(_T("端末種:%s "), (LPCTSTR)consoleType(ctype));
+    _tprintf(_T("処理:%s "), (LPCTSTR)procType(proc));
 
     // 日付
     yy = date >> 9;
     mm = (date >> 5) & 0xf;
     dd = date & 0x1f;
-    printf("%02d/%02d/%02d ", yy, mm, dd);
+    _tprintf(_T("%02d/%02d/%02d "), yy, mm, dd);
 
     // 時刻
     if (time > 0) {
         int hh = time >> 11;
         int min = (time >> 5) & 0x3f;
 
-        printf(" %02d:%02d ", hh, min);
+        _tprintf(_T(" %02d:%02d "), hh, min);
     }
     
-    printf("入:%x/%x ", in_line, in_sta);
+    _tprintf(_T("入:%x/%x "), in_line, in_sta);
     if (out_line != -1) {
-        printf("出:%x/%x ", out_line, out_sta);
+        _tprintf(_T("出:%x/%x "), out_line, out_sta);
     }
 
-    printf("残高:%d ", balance);
-    printf("連番:%d\n", seq);
+    _tprintf(_T("残高:%d "), balance);
+    _tprintf(_T("連番:%d\n"), seq);
 }
 
-static const char *consoleType(int ctype)
+static LPCTSTR consoleType(int ctype)
 {
     switch (ctype) {
-    case 0x03: return "清算機";
-    case 0x05: return "車載端末";
-    case 0x08: return "券売機";
-    case 0x12: return "券売機";
-    case 0x16: return "改札機";
-    case 0x17: return "簡易改札機";
-    case 0x18: return "窓口端末";
-    case 0x1a: return "改札端末";
-    case 0x1b: return "携帯電話";
-    case 0x1c: return "乗継清算機";
-    case 0x1d: return "連絡改札機";
-    case 0xc7: return "物販";
-    case 0xc8: return "自販機";
+    case 0x03: return (LPCTSTR)_T("清算機");
+    case 0x05: return (LPCTSTR)_T("車載端末");
+    case 0x08: return (LPCTSTR)_T("券売機");
+    case 0x12: return (LPCTSTR)_T("券売機");
+    case 0x16: return (LPCTSTR)_T("改札機");
+    case 0x17: return (LPCTSTR)_T("簡易改札機");
+    case 0x18: return (LPCTSTR)_T("窓口端末");
+    case 0x1a: return (LPCTSTR)_T("改札端末");
+    case 0x1b: return (LPCTSTR)_T("携帯電話");
+    case 0x1c: return (LPCTSTR)_T("乗継清算機");
+    case 0x1d: return (LPCTSTR)_T("連絡改札機");
+    case 0xc7: return (LPCTSTR)_T("物販");
+    case 0xc8: return (LPCTSTR)_T("自販機");
     }
-    return "???";
+    return (LPCTSTR)_T("???");
 }
 
-static const char *procType(int proc)
+static LPCTSTR procType(int proc)
 {
     switch (proc) {
-    case 0x01: return "運賃支払";
-    case 0x02: return "チャージ";
-    case 0x03: return "券購";
-    case 0x04: return "清算";
-    case 0x07: return "新規";
-    case 0x0d: return "バス";
-    case 0x0f: return "バス";
-    case 0x14: return "オートチャージ";
-    case 0x46: return "物販";
-    case 0x49: return "入金";
-    case 0xc6: return "物販(現金併用)";
+    case 0x01: return (LPCTSTR)_T("運賃支払");
+    case 0x02: return (LPCTSTR)_T("チャージ");
+    case 0x03: return (LPCTSTR)_T("券購");
+    case 0x04: return (LPCTSTR)_T("清算");
+    case 0x07: return (LPCTSTR)_T("新規");
+    case 0x0d: return (LPCTSTR)_T("バス");
+    case 0x0f: return (LPCTSTR)_T("バス");
+    case 0x14: return (LPCTSTR)_T("オートチャージ");
+    case 0x46: return (LPCTSTR)_T("物販");
+    case 0x49: return (LPCTSTR)_T("入金");
+    case 0xc6: return (LPCTSTR)_T("物販(現金併用)");
     }
-    return "???";
+    return (LPCTSTR)_T("???");
 }
 
 static int read4b(uint8 *p)
