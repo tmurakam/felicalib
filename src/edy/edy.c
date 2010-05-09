@@ -38,6 +38,9 @@
 
 #include <stdio.h>
 #include <time.h>
+#include <windows.h>
+#include <tchar.h>
+#include <locale.h>
 
 #include "felicalib.h"
 
@@ -57,27 +60,34 @@ int _tmain(int argc, _TCHAR *argv[])
     int i;
     uint8 data[16];
 
+    setlocale( LC_ALL, "Japanese");
+
     p = pasori_open(NULL);
-    if (!p) {
-        fprintf(stderr, "PaSoRi open failed.\n");
-        exit(1);
+    if (!p)
+    {
+        _ftprintf(stderr, _T("PaSoRi open failed.\n"));
+    exit(1);
     }
     pasori_init(p);
     
     f = felica_polling(p, POLLING_EDY, 0, 0);
-    if (!f) {
-        fprintf(stderr, "Polling card failed.\n");
+    if (!f)
+    {
+        _ftprintf(stderr, _T("Polling card failed.\n"));
         exit(1);
     }
 
-    printf("IDm: ");
-    for (i = 0; i < 8; i++) {
-        printf("%02x", f->IDm[i]);
+    _tprintf(_T("IDm: "));
+    for (i = 0; i < 8; i++)
+    {
+        _tprintf(_T("%02x"), f->IDm[i]);
     }
-    printf("\n");
+    _tprintf(_T("\n"));
 
-    for (i = 0; ; i++) {
-        if (felica_read_without_encryption02(f, SERVICE_EDY, 0, (uint8)i, data)) {
+    for (i = 0; ; i++)
+    {
+        if (felica_read_without_encryption02(f, SERVICE_EDY, 0, (uint8)i, data))
+        {
             break;
         }
         edy_dump(data);
@@ -91,45 +101,46 @@ int _tmain(int argc, _TCHAR *argv[])
 static void edy_dump(uint8 *data)
 {
     int proc, time, value, balance, seq, v;
-    struct tm tt;
+    struct  tm tt;
 
     v = read4b(data + 0);
-    proc = v >> 24;             // 処理
+    proc = v >> 24;         // 処理
     seq  = v & 0xffffff;        // 連番
     time = read4b(data + 4);    // 時刻
     value = read4b(data + 8);   // 金額
-    balance = read4b(data + 12);// 残高        
+    balance = read4b(data + 12);    // 残高        
 
     // 日付/時刻
     analyzeTime(time, &tt);
-    printf("%d/%02d/%02d %02d:%02d:%02d ",
-           tt.tm_year, tt.tm_mon, tt.tm_mday,
-           tt.tm_hour, tt.tm_min, tt.tm_sec);
+    _tprintf(_T("%d/%02d/%02d %02d:%02d:%02d "),
+        tt.tm_year, tt.tm_mon, tt.tm_mday,
+        tt.tm_hour, tt.tm_min, tt.tm_sec);
 
-    switch (proc) {
-    case 0x02:
-        printf("チャージ ");
-        break;
-    case 0x20:
-        printf("支払い   ");
-        break;
-    case 0x04:
-        printf("ギフト   ");
-        break;
-    default:
-        printf("????     ");
-        break;
+    switch (proc)
+    {
+        case 0x02:
+            _tprintf(_T("チャージ "));
+            break;
+        case 0x20:
+            _tprintf(_T("支払い   "));
+            break;
+        case 0x04:
+            _tprintf(_T("ギフト   "));
+            break;
+        default:
+            _tprintf(_T("????     "));
+            break;
     }
 
-    printf("金額:%-5d ", value);
-    printf("残高:%-5d ", balance);
-    printf("連番:%d\n", seq);
+    _tprintf(_T("金額:%-5d "), value);
+    _tprintf(_T("残高:%-5d "), balance);
+    _tprintf(_T("連番:%d\n"), seq);
 }
 
 static void analyzeTime(int n, struct tm *t)
 {
-    time_t tt;
-    struct tm *t2;
+    time_t  tt;
+    struct  tm *t2;
 
     // calculate day
     memset(t, 0, sizeof(*t));
