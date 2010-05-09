@@ -1,3 +1,8 @@
+2010-05-05 : Hirokazu Hayashi
+           * x64ネイティブ動作対応
+           * C#サポートのAnyCPU対応
+           * サンプルアプリのUnicode対応
+
 2008-06-01 : Takuya Murakami
            * ver 0.4.2
            * FelicaDump.exe がクラッシュする問題を修正。

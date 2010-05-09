@@ -2,7 +2,7 @@
 
 PaSoRi を使って FeliCa にアクセスするためのライブラリです。
 
-詳細は http://felicalib.sourceforge.jp を参照してください。
+詳細は http://felicalib.tmurakam.org を参照してください。
 
 
 ** ビルド手順
