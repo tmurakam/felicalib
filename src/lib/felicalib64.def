@@ -1,0 +1,15 @@
+LIBRARY	"felicalib64"
+
+EXPORTS
+    pasori_open
+    pasori_open2
+    pasori_close
+    pasori_init
+    felica_polling
+    felica_getidm
+    felica_getpmm
+    felica_free
+    felica_read_without_encryption02
+    felica_write_without_encryption
+    felica_enum_service
+    felica_enum_systemcode
