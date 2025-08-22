@@ -84,6 +84,8 @@ pasori *pasori_open2(TCHAR *dllpath)
     resolve_entry(polling_and_search_service_code);
     resolve_entry(read_block_without_encryption);
     resolve_entry(write_block_without_encryption);
+    resolve_entry(set_polling_timeout);
+    resolve_entry(set_retry_count);
 
     if (!p->initialize_library()) {
         free(p);
@@ -151,6 +153,9 @@ felica *felica_polling(pasori *p, uint16 systemcode, uint8 RFU, uint8 timeslot)
 
     card_info.card_idm = f->IDm;
     card_info.card_pmm = f->PMm;
+
+    p->set_polling_timeout(200);
+    p->set_retry_count(10);
 
     if (!p->polling_and_get_card_information(&polling, &number_of_cards, &card_info) ||
         number_of_cards == 0) {

@@ -1,7 +1,7 @@
 /*
  felicalib - FeliCa access wrapper library
 
- Copyright (c) 2007, Takuya Murakami, All rights reserved.
+ Copyright (c) 2007-2025, Takuya Murakami, All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are
@@ -124,6 +124,9 @@ typedef BOOL (*polling_and_search_service_code_t)(POLLING *, INSTR_SEARCH_SERVIC
 typedef BOOL (*read_block_without_encryption_t)(INSTR_READ_BLOCK *, OUTSTR_READ_BLOCK *);
 typedef BOOL (*write_block_without_encryption_t)(INSTR_WRITE_BLOCK *, OUTSTR_WRITE_BLOCK *);
 
+typedef BOOL (*set_polling_timeout_t)(unsigned long);
+typedef BOOL (*set_retry_count_t)(unsigned long);
+
 /* structures */
 /**
    @brief PaSoRi ƒnƒ“ƒhƒ‹
@@ -143,6 +146,8 @@ struct strpasori {
     declare_entry(polling_and_search_service_code);
     declare_entry(read_block_without_encryption);
     declare_entry(write_block_without_encryption);
+    declare_entry(set_polling_timeout);
+    declare_entry(set_retry_count);
 #undef declare_entry
 };
 
